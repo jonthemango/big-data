@@ -5,6 +5,7 @@ Our initial plan will be to classify each frame of a mp4 file as real or fake. T
 
 
 ## Example of the metadata.json provided for each chunk
+```
 {
   "vsghjdhss.mp4": {
     "label": "FAKE",
@@ -22,3 +23,4 @@ Our initial plan will be to classify each frame of a mp4 file as real or fake. T
   },
   ...
 }
+```
