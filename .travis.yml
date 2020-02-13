@@ -13,6 +13,6 @@ before_install:
     - pip install codecov
 install:
     - pip install -r requirements.txt # install package + test dependencies
-script: pytest # run tests
+script: python -m pytest  # run tests
 after_success:
     - codecov # submit coverage
