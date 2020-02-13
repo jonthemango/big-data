@@ -2,7 +2,6 @@ language: python
 python:
   - "3.6"      # current default Python on Travis CI
   - "3.7"
-  - "3.8"
 env:
     - PYTHONHASHSEED=0 JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
