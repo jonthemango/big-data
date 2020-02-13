@@ -1,3 +1,6 @@
+![Build Status](https://travis-ci.org/jonthemango/big-data.svg?branch=master)
+[![Code Coverage](https://codecov.io/github/jonthemango/big-data/coverage.svg)](https://codecov.io/gh/jonthemango/big-data)
+
 # Abstract
 Many people who lack an extensive credit history find it exceedingly difficult to receive a loan. As a result, these people get taken advantage of by shady lenders. The purpose of this project is to use alternative data about customers to determine whether or not they have the ability to repay their loans. This is a supervised binary classification problem. 
 
