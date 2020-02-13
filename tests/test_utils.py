@@ -1,5 +1,5 @@
 from utils import dump, init_spark
-
+import os
 def test_dump():
     spark = init_spark()
     sc = spark.sparkContext
@@ -10,4 +10,4 @@ def test_dump():
     dump(distData,fn)
     with open(fn, 'r') as f:
         assert len(f.readlines()) == len(data)
-    
+    os.remove(fn)
