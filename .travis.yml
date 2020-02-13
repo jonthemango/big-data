@@ -17,6 +17,6 @@ before_install:
     - pip install codecov
 install:
     - pip install -r requirements.txt # install package + test dependencies
-script: python -m pytest  # run tests
+script: coverage run -m pytest  # run tests 
 after_success:
     - bash <(curl -s https://codecov.io/bash)
