@@ -20,3 +20,4 @@ install:
 script: python -m pytest  # run tests
 after_success:
     - codecov # submit coverage
+    - bash <(curl -s https://codecov.io/bash)
