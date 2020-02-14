@@ -51,7 +51,16 @@ def generate_dict_of_missing_values():
 
     return report
 
+def generate_csv_from_dict(dictionary):
+    text = "Feature Name, Missing Values, Percentage Missing\n"
+    for key in dictionary["columns"]:
+        text += key + "," + str(dictionary["columns"][key]["missing values"]) + "," + str(dictionary["columns"][key]["percentage"])+ "\n"
+    with open('missing_values.csv', 'w') as file:
+        file.write(text)
+
+
 report = generate_dict_of_missing_values()
+generate_csv_from_dict(report)
 json_string = json.dumps(report, indent=True)
 with open('missing_values.json', 'w') as file:
     file.write(json_string)
