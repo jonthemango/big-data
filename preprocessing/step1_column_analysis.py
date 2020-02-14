@@ -34,29 +34,34 @@ def generate_dict_of_missing_values():
     spark = init_spark()
     data = spark.read.csv(filename, header=True)
     columns = data.columns
-    report = {"columns": {}}
+    report = {"columns": {}, "complete_features": 0}
     iteration = 0
+
     for feature in columns:
         iteration += 1
         absolute, percent = find_missing_by_column(data, feature)
         report["columns"][feature] = {
-            "missing values": absolute,
+            "missing_values": absolute,
             "percentage": percent
         }
+
+        if absolute == 0:
+            report["complete_features"] = report["complete_features"]+1
 
         # This is just to print progress given that the script take about 2-3 min to run
         progress = iteration/len(columns)*100
         if iteration % 5 == 0:
             print(f"progress: {round(progress,1)}%")
-
+    
     return report
 
 def generate_csv_from_dict(dictionary):
     text = "Feature Name, Missing Values, Percentage Missing\n"
-    for key in dictionary["columns"]:
-        text += key + "," + str(dictionary["columns"][key]["missing values"]) + "," + str(dictionary["columns"][key]["percentage"])+ "\n"
+    for key in sorted(dictionary["columns"], key=lambda key: dictionary["columns"][key]["missing_values"]):
+        text += key + "," + str(dictionary["columns"][key]["missing_values"]) + "," + str(dictionary["columns"][key]["percentage"])+ "\n"
     with open('missing_values.csv', 'w') as file:
         file.write(text)
+
 
 
 report = generate_dict_of_missing_values()

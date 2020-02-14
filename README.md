@@ -33,7 +33,7 @@ The entire dataset emcompasses 7 csv files.
 
 | File Name  | Shape | Description | Imfortant Features
 |---|---|---|---|
-| data\application_train.csv  | 307,511 rows, 122 columns  | Contains information about the approval of loan applications. Each row is a loan application. | `SK_ID_CURR` identifies the loan application. `TARGET` is a 0 if the loan was repaid while a 1 determines whether the loan is not repaid. |
+| **data\application_train.csv**  | 307,511 rows, 122 columns  | Contains information about the approval of loan applications. Each row is a loan application. | `SK_ID_CURR` identifies the loan application. `TARGET` is a 0 if the loan was repaid while a 1 determines whether the loan is not repaid. |
 | data\bureau.csv | 1,716,428 rows, 17 columns | Contains information about loan applicants' credit history from other banks and financial institutions. Each row is a credit.  | `SK_ID_BUREAU` identifies the credit. `SK_ID_CURR` identifies the loan application. |
 | data\bureau_balance.csv | 27,299,925 rows, 3 columns  | Contains monthly data about credits from `bureau.csv`. Each row is a monthly credit. | `SK_ID_BUREAU` identifies the credit. `MONTHS_BALANCE` represents the number of months relative to the application date (-1 means most recent) |
 | data\previous_application.csv | 1,670,214 rows, 37 columns | Each row represents one previous loan application. There may be many previous loan applications for every current application in `application_train.csv`  | `SK_ID_PREV` identifies the previous loan application. `SK_ID_CURR` identifies the current loan application.  |
@@ -43,7 +43,18 @@ The entire dataset emcompasses 7 csv files.
 
 Additionally we are provided with `HomeCredit_columns_descriptions.csv` which provides an in-depth description for the column names in each table.
 
+Preliminarily we wanted to do some pre-processing on the  **data\application_train.csv** data to see what percentage of instances were missing a particular feature. Our results for this can be found [in this outputted CSV](https://github.com/jonthemango/big-data/blob/master/preprocessing/missing_values.csv). We were able to determine that of the 122 columns, 55 columns were completely intact (meaning there were no records missing that feature). 
 
+Another interesting thing to note about the available data is the distribution between loans which have been approved and loans which have not been approved.
+```
+>>> df = data.select("TARGET")
+>>> not_approved = df.where(data["TARGET"] == 1).count() # Not been approved for a loan
+>>> approved = df.where(data["TARGET"] == 0).count() # Approved for a loan
+# 282,686 approved, 24,825 not approved
+>>> approved/(approved+not_approved)
+0.9192711805431351
+```
+Meaning only about 9.2 % of applications actually get approved for a loan. We will need to take this into consideration when classifying our data. One class of loan applications is far larger than the other. We will either need to sub-sample our data (after already doing so after seperating into train/test) or we will need to add linear combinations of approved loans. We will experiment with both approaches to see what makes our model most effective.
 
 ## Technologies and Algorithms
 - Spark
