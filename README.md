@@ -4,6 +4,7 @@
 ## Authors
 Jon Mongeau - https://github.com/jonthemango
 Ribal Aladeeb - https://github.com/ribal-aladeeb
+Feras Younis - https://github.com/FerasYounis
 
 
 # Abstract
@@ -58,7 +59,16 @@ Meaning only about 9.2 % of applications actually get approved for a loan. We wi
 
 ## Technologies and Algorithms
 - Spark
-- Spark ML
+- Spark ML: ML library got algorithms to work with features. these algorithms could be grouped into 4 areas.
+Extraction, Transformation, Selection and LSH "Locality Sensitive Hashing".
+- Spark RDD
+- Pandas
+- DataFrames
+algorithms
 - Algorithms?
+- Clustering -> Divisive "top down" algorithm
+- Clustering -> k-means algorithm
+- CURE algorithm 
+- User Profile and Prediction
 
 - baseline using random and knn. Then possibly train a decision tree or random forest.
