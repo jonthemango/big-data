@@ -70,5 +70,6 @@ algorithms
 - Clustering -> k-means algorithm
 - CURE algorithm 
 - User Profile and Prediction
-
+- Polynomial "to construct a new features from other features and interactions terms between them"
+- Random Forest
 - baseline using random and knn. Then possibly train a decision tree or random forest.
