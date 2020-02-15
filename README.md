@@ -58,18 +58,10 @@ Another interesting thing to note about the available data is the distribution b
 Meaning only about 9.2 % of applications actually get approved for a loan. We will need to take this into consideration when classifying our data. One class of loan applications is far larger than the other. We will either need to sub-sample our data (after already doing so after seperating into train/test) or we will need to add linear combinations of approved loans. We will experiment with both approaches to see what makes our model most effective.
 
 ## Technologies and Algorithms
-- Spark
-- Spark ML: ML library got algorithms to work with features. these algorithms could be grouped into 4 areas.
-Extraction, Transformation, Selection and LSH "Locality Sensitive Hashing".
-- Spark RDD
-- Pandas
-- DataFrames
-algorithms
-- Algorithms?
-- Clustering -> Divisive "top down" algorithm
-- Clustering -> k-means algorithm
-- CURE algorithm 
-- User Profile and Prediction
-- Polynomial "to construct a new features from other features and interactions terms between them"
-- Random Forest
-- baseline using random and knn. Then possibly train a decision tree or random forest.
+We will use Apache Spark Dataframes and RDDs in order to perform some pre-processing on the dataset. For our feature engineering our goal is to perform dynamic feature engineering. The goal with this is to evaluate which features yield the best model. We will seperate the data into 2/3 train and 1/3 test data. We want to also attempt to do this dynamically.
+
+For training we will use Skikit-Learn. We are interested in applying packaged algorithms like Descision Trees (Random Forests), kNN and SVMs. We will experiment with other algorithms as we see fit but our plan is to commence with these algorithms. We also plan on using a random classifier in order to establish a baseline.
+
+For evaluation we will define true positives as loans we correctly predict as accepted, true negatives as loans we correctly predict as rejected, false positives as loans we incorrectly predict as accepted and false negatives as loans we incorrectly predict as rejected. We will use Skikit-Learn to evaluate our models.
+
+Once we iterate upon this process of pre-process to test/train split to algorithm-selections to evaluation we will also be deploying our model to a web service continuously. The goal is to wrap a Python Flask web service around a sub-set of our models and create a Web UI where users can enter information of a client and view what values our models predict. We will use docker, Flask and ReactJs for this web service.
