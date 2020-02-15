@@ -18,16 +18,16 @@ The [dataset](https://www.kaggle.com/c/home-credit-default-risk/overview) is pro
 # Introduction
 
 ## Context
-[Home Credit](http://www.homecredit.net/about-us.aspx) aims to offer loan services to unbanked and underbanked people. Their target clientele could be either new immigrants, people of lower income, people recently got out of homelessness or anyone who simply has not had access to banking services. The company posted this dataset of historical loans that they have given out along with all the information that they collect regarding those loans in the context of a kaggle competition. The competition is now expired but you can still see the top submissions and there is some good documentation on where to get started.
+[Home Credit](http://www.homecredit.net/about-us.aspx) aims to offer loaning services to unbanked and underbanked people. Their target clientele could be either new immigrants, people of lower income, people who recently got out of homelessness or anyone who simply has not had access to banking services. The company posted this dataset of historical loans that they have given out along with all the information that they collect regarding those loans in the context of a kaggle competition. The competition is now expired but you can still see the top submissions and there is some good documentation on where to get started.
 
 ## Objectives
-The main goal is to find the best predictors to determine whether a client can repay a loan, given that they do not have a substantial credit history. The company provides multiple a entensive amount of data regardgin customers across multiple tables. It is our job to find a winning combination of features across all tables that will yield the best precision and recall possible. The winning score on kaggle is 0.80570 using the ROC curve.
+The main goal is to find the best predictors to determine whether a client can repay a loan, given that they do not have a substantial credit history. The company provides an extensive amount of data regarding their customers across multiple tables. Our job is to find a winning combination of features across all tables that will yield the best precision and recall possible. The winning score on kaggle is 0.80570 using the ROC curve.
 
 
 ## Presentation of the Problem to Solve
-This project is a supervised binary classification learning problem. Our first problem is that a lot of columns are missing values, some are very sparse. For this we wrote a quick [script](https://github.com/jonthemango/big-data/blob/master/preprocessing/step1_column_analysis.py) that counts missing values by column for a table and generates a [json](https://github.com/jonthemango/big-data/blob/master/preprocessing/missing_values.json) and [csv](https://github.com/jonthemango/big-data/blob/master/preprocessing/missing_values.csv) report. Our plan for now is to identify all columns with missing values and drop them. We feel like we can afford to do this because our main application table contains 122 columns and 56 out of them do not contain missing values.
+This project is a supervised binary classification learning problem. Our first problem is that a lot of columns are missing values, some are very sparse. For this we wrote a quick [script](https://github.com/jonthemango/big-data/blob/master/preprocessing/step1_column_analysis.py) that counts missing values by column for a table and generates a [json](https://github.com/jonthemango/big-data/blob/master/preprocessing/missing_values.json) and [csv](https://github.com/jonthemango/big-data/blob/master/preprocessing/missing_values.csv) report. Our plan for now is to identify all columns with missing values and drop them. We feel like we can afford to do this because our main application table contains 122 columns and 55 out of them do not contain missing values.
 
-Furthermore, we have a combination of about 50M+ records across 7 tables. The common denominator is a column named SK_ID_CURR. This ID is unique in the application_train.csv file but can be repeated in other tables, which creates multiplicity. A big challenge is to aggregate the data related to a given SK_ID_CURR from all tables into a single feature vector for training.
+Furthermore, we have a combination of about 50M+ records across 7 tables. The common denominator is a column named SK_ID_CURR which denotes the ID of a current loan application. This ID is unique in the application_train.csv file but can be repeated in other tables, which creates multiplicity. A big challenge is to aggregate the data related to a given SK_ID_CURR from all tables into a single feature vector for training.
 
 ## Related Work
 - [Introduction to Dataset/Problem](https://www.kaggle.com/willkoehrsen/start-here-a-gentle-introduction)
@@ -52,22 +52,20 @@ The entire dataset emcompasses 7 csv files.
 
 Additionally we are provided with `HomeCredit_columns_descriptions.csv` which provides an in-depth description for the column names in each table.
 
-Preliminarily we wanted to do some pre-processing on the  **./data/application_train.csv** data to see what percentage of instances were missing a particular feature. Our results for this can be found [in this outputted CSV](https://github.com/jonthemango/big-data/blob/master/preprocessing/missing_values.csv). We were able to determine that of the 122 columns, 55 columns were completely intact (meaning there were no records missing that feature). 
-
-Another interesting thing to note about the available data is the distribution between loans which have been approved and loans which have not been approved.
+An interesting note about the available data is the distribution between loans which have been repaid and loans which have not been repaid.
 ```
 >>> df = data.select("TARGET")
->>> not_approved = df.where(data["TARGET"] == 1).count() # Not been approved for a loan
->>> approved = df.where(data["TARGET"] == 0).count() # Approved for a loan
-# 282,686 approved, 24,825 not approved
->>> approved/(approved+not_approved)
+>>> not_repaid = df.where(data["TARGET"] == 1).count() # 1 means client did not repay loan
+>>> repaid = df.where(data["TARGET"] == 0).count() # 0 means loan was repaid
+# 282,686 repaid, 24,825 not_repaid
+>>> repaid/(repaid+not_repaid)
 0.9192711805431351
 ```
-Meaning only about 9.2 % of applications actually get approved for a loan. We will need to take this into consideration when classifying our data. One class of loan applications is far larger than the other. We will either need to sub-sample our data (after already doing so after seperating into train/test) or we will need to add linear combinations of approved loans. We will experiment with both approaches to see what makes our model most effective.
+Meaning 91.93 % loans get repaid. We will need to take this into consideration when classifying our data. One class of loan applications is far larger than the other. We will either need to sub-sample our data (after already doing so after seperating into train/test) or we will need to add linear combinations of approved loans. We will experiment with both approaches to see what makes our model most effective.
 
 ## Technologies and Algorithms
 We will use Apache Spark Dataframes and RDDs in order to perform some pre-processing on the dataset. For our feature engineering our goal is to perform dynamic feature engineering. The goal with this is to evaluate which features yield the best model. We will seperate the data into 2/3 train and 1/3 test data. We want to also attempt to do this dynamically. Feature engineering can involve feature construction and feature selection, there is one technique we would to try for construction: Polynomial features, In this method, we make features that are powers of existing features as well as interaction terms between existing features. By combining two variables together into a single interaction may show stronger relation with the target “client may or not repay the loan”. Then, to get a baseline, and after encoding the categorical variables. Will use all features and fill the missing data and normalizing the range of feature. Scikit tool can be used to preprocessing these two steps on the data.
- 
+
 For training we will use Skikit-Learn. We are interested in applying packaged algorithms like Descision Trees (Random Forests), kNN and SVMs. We will experiment with other algorithms as we see fit but our plan is to commence with these algorithms. We also plan on using a random classifier in order to establish a baseline.
 
 For evaluation we will define true positives as loans we correctly predict as accepted, true negatives as loans we correctly predict as rejected, false positives as loans we incorrectly predict as accepted and false negatives as loans we incorrectly predict as rejected. We will use Skikit-Learn to evaluate our models.
