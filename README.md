@@ -3,7 +3,9 @@
 
 ## Authors
 Jon Mongeau - https://github.com/jonthemango
+
 Ribal Aladeeb - https://github.com/ribal-aladeeb
+
 Feras Younis - https://github.com/FerasYounis
 
 
@@ -28,7 +30,10 @@ This project is a supervised binary classification learning problem. Our first p
 Furthermore, we have a combination of about 50M+ records across 7 tables. The common denominator is a column named SK_ID_CURR. This ID is unique in the application_train.csv file but can be repeated in other tables, which creates multiplicity. A big challenge is to aggregate the data related to a given SK_ID_CURR from all tables into a single feature vector for training.
 
 ## Related Work
-- reference to other data
+- [Introduction to Dataset/Problem](https://www.kaggle.com/willkoehrsen/start-here-a-gentle-introduction)
+
+- [Feature Engineering ](https://www.kaggle.com/willkoehrsen/automated-feature-engineering-basics)
+
 
 # Materials and Methods
 
