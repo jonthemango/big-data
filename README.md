@@ -50,7 +50,7 @@ The entire dataset emcompasses 7 csv files.
 | ./data/credit_card_balance.csv | 3,840,312 rows, 23 columns | Contains monthly data about credit cards clients had with the company. Each row is a monthly credit card balance. | `SK_ID_PREV` identifies the previous loan application. `SK_ID_CURR` identifies the current loan application. `MONTHS_BALANCE` represents the number of months relative to the application date (-1 means most recent). |
 | ./data/installments_payments.csv | 13,605,401 rows, 8 columns | Contains payment history data for previous loans applications. Each row is a payment made or missed.  | `SK_ID_PREV` identifies the previous loan application. `SK_ID_CURR` identifies the current loan application. `AMT_PAYMENT` identifies the amount payed (0.0 means missed). |
 
-Additionally we are provided with `HomeCredit_columns_descriptions.csv` which provides an in-depth description for the column names in each table.
+Additionally we are provided with [HomeCredit_columns_descriptions.csv](https://github.com/jonthemango/big-data/blob/master/data/sample/sample_HomeCredit_columns_description.csv) which provides an in-depth description for the column names in each table.
 
 An interesting note about the available data is the distribution between loans which have been repaid and loans which have not been repaid.
 ```
