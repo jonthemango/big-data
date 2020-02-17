@@ -3,6 +3,7 @@ from pyspark.sql import DataFrame
 from pyspark.sql import SparkSession
 import json
 import copy as cp
+import os
 
 '''
 This script counts the number of missing values for each column of each file in
@@ -10,7 +11,22 @@ the training set and outputs a report to 'missing_values.json'. Keep in mind
 that this can take ~7min.
 '''
 
-project_root = '../data/'
+
+def get_project_root_dir():
+    # because the root of the project contains the .git/ repo
+    while not os.path.isdir('.git/'):
+        if os.getcwd() is '/':
+            print('\nYou are trying to get the root folder of the big data project')
+            print('but you are running this script outside of the project.')
+            print('Navigate to your big data directory and try again')
+            exit(1)
+        else:
+            os.chdir('..')
+
+    return os.getcwd()
+
+
+project_root = get_project_root_dir()
 
 filenames = [
     'bureau_balance.csv',
@@ -39,13 +55,13 @@ def init_spark():
 
 def driver():
     report = analyse_columns_in_all_data_files(filenames)
-    
+
     json_string = json.dumps(report, indent=True)
     with open(json_output_file, 'w') as file:
         file.write(json_string)
-    
+
     generate_csv_from_json(json_output_file, csv_output_file)
-    
+
     print(f'View {json_output_file} and {csv_output_file} for result')
 
 
