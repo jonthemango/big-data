@@ -3,7 +3,7 @@ from pyspark.sql import DataFrame
 from pyspark.sql import SparkSession
 import json
 import copy as cp
-import os
+import utils
 
 '''
 This script counts the number of missing values for each column of each file in
@@ -11,22 +11,7 @@ the training set and outputs a report to 'missing_values.json'. Keep in mind
 that this can take ~7min.
 '''
 
-
-def get_project_root_dir() -> str:
-    # because the root of the project contains the .git/ repo
-    while not os.path.isdir('.git/'):
-        if os.getcwd() is '/':
-            print('\nYou are trying to get the root folder of the big data project')
-            print('but you are running this script outside of the project.')
-            print('Navigate to your big data directory and try again')
-            exit(1)
-        else:
-            os.chdir('..')
-
-    return os.getcwd()+'/'
-
-
-data_directory = get_project_root_dir() + 'data/'
+data_directory = utils.get_project_root_dir() + 'data/'
 
 filenames = [
     'bureau_balance.csv',
@@ -37,17 +22,8 @@ filenames = [
     'previous_application.csv',
     'application_train.csv',
 ]
-json_output_file = f'{get_project_root_dir()}preprocessing/missing_values.json'
-csv_output_file = f'{get_project_root_dir()}preprocessing/missing_values.csv'
-
-
-def init_spark():
-    spark = SparkSession \
-        .builder \
-        .appName("Python Spark SQL basic example") \
-        .config("spark.some.config.option", "some-value") \
-        .getOrCreate()
-    return spark
+json_output_file = f'{utils.get_project_root_dir()}preprocessing/missing_values.json'
+csv_output_file = f'{utils.get_project_root_dir()}preprocessing/missing_values.csv'
 
 
 def driver():
@@ -76,7 +52,7 @@ def find_missing_by_column(data, column):
 
 
 def generate_dict_of_missing_values(filename):
-    spark = init_spark()
+    spark = utils.init_spark()
     data = spark.read.csv(filename, header=True)
     columns = data.columns
     report = {"columns": {}, "complete_features": 0}
