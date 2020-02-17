@@ -53,7 +53,7 @@ def init_spark():
 def driver():
     report: dict = analyse_columns_in_all_data_files(filenames)
 
-    json_report: str = json.dumps(report, indent=True)
+    json_report: str = json.dumps(report, indent=4)
     write2file(json_report, json_output_file)
 
     csv_report: str = generate_csv_from_json(json_output_file)
