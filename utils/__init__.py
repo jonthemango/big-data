@@ -22,7 +22,7 @@ def init_spark():
 def get_project_root_dir() -> str:
     # because the root of the project contains the .git/ repo
     while not os.path.isdir('.git/'):
-        if os.getcwd() is '/':
+        if os.getcwd() == '/':
             print('\nYou are trying to get the root folder of the big data project')
             print('but you are running this script outside of the project.')
             print('Navigate to your big data directory and try again')
