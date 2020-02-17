@@ -2,16 +2,32 @@ from pyspark.rdd import RDD
 from pyspark.sql import DataFrame
 from pyspark.sql import SparkSession
 import json
+import copy as cp
 
 '''
-This script counts the number of missing values for each column (122) in the
-training set and outputs a report to 'missing_values.json'. Keep in mind that
-this can take 2-3 min. 
+This script counts the number of missing values for each column of each file in
+the training set and outputs a report to 'missing_values.json'. Keep in mind
+that this can take ~7min.
 '''
 
-filename = "../data/application_train.csv"
+project_root = '../data/'
+
+filenames = [
+    'bureau_balance.csv',
+    'bureau.csv',
+    'credit_card_balance.csv',
+    'installments_payments.csv',
+    'POS_CASH_balance.csv',
+    'previous_application.csv',
+    'HomeCredit_columns_description.csv',
+    'application_train.csv',
+]
+json_output_file = 'missing_values.json'
+csv_output_file = 'missing_values.csv'
 
 # Initialize a spark session.
+
+
 def init_spark():
     spark = SparkSession \
         .builder \
@@ -21,6 +37,16 @@ def init_spark():
     return spark
 
 
+def driver():
+    report = analyse_columns_in_all_data_files(filenames)
+    
+    json_string = json.dumps(report, indent=True)
+    with open(json_output_file, 'w') as file:
+        file.write(json_string)
+    
+    generate_csv_from_json(json_output_file, csv_output_file)
+    
+    print(f'View {json_output_file} and {csv_output_file} for result')
 
 
 def find_missing_by_column(data, column):
@@ -30,7 +56,7 @@ def find_missing_by_column(data, column):
     return (count_missing, percent)
 
 
-def generate_dict_of_missing_values():
+def generate_dict_of_missing_values(filename):
     spark = init_spark()
     data = spark.read.csv(filename, header=True)
     columns = data.columns
@@ -44,29 +70,50 @@ def generate_dict_of_missing_values():
             "missing_values": absolute,
             "percentage": percent
         }
-
         if absolute == 0:
-            report["complete_features"] = report["complete_features"]+1
+            report["complete_features"] += 1
 
-        # This is just to print progress given that the script take about 2-3 min to run
+        # printing progress given that script can take ~7min to run
         progress = iteration/len(columns)*100
         if iteration % 5 == 0:
             print(f"progress: {round(progress,1)}%")
-    
+
     return report
 
-def generate_csv_from_dict(dictionary):
-    text = "Feature Name, Missing Values, Percentage Missing\n"
-    for key in sorted(dictionary["columns"], key=lambda key: dictionary["columns"][key]["missing_values"]):
-        text += key + "," + str(dictionary["columns"][key]["missing_values"]) + "," + str(dictionary["columns"][key]["percentage"])+ "\n"
-    with open('missing_values.csv', 'w') as file:
+
+def analyse_columns_in_all_data_files(filenames):
+    final_report = {}
+    for file in filenames:
+        file_path = f'{project_root}{file}'
+        print(f'generating report for file: {file}')
+        final_report[file] = generate_dict_of_missing_values(file_path)
+    return final_report
+
+
+def generate_csv_from_json(json_filename: str, output_file):
+
+    text: str = ',Filename, Column Name, Missing Values, Percentage Missing\n'
+    count = 0
+    with open(json_filename) as report_file:
+
+        report: dict = json.loads(report_file.read())
+        filenames: list = sorted(report.keys())
+
+        for file in filenames:
+
+            columns = sorted(
+                report[file]["columns"], key=lambda column: report[file]["columns"][column]["missing_values"])
+
+            for column in columns:
+                count += 1
+                missing_values = str(
+                    report[file]["columns"][column]["missing_values"])
+
+                percent = str(report[file]["columns"][column]["percentage"])
+                text += f'{count}, {file}, {column}, {missing_values}, {percent}\n'
+
+    with open(output_file, 'w') as file:
         file.write(text)
 
 
-
-report = generate_dict_of_missing_values()
-generate_csv_from_dict(report)
-json_string = json.dumps(report, indent=True)
-with open('missing_values.json', 'w') as file:
-    file.write(json_string)
-print(json_string)
+driver()

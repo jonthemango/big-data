@@ -1,123 +1,224 @@
-Feature Name, Missing Values, Percentage Missing
-SK_ID_CURR,0,0.0
-TARGET,0,0.0
-NAME_CONTRACT_TYPE,0,0.0
-CODE_GENDER,0,0.0
-FLAG_OWN_CAR,0,0.0
-FLAG_OWN_REALTY,0,0.0
-CNT_CHILDREN,0,0.0
-AMT_INCOME_TOTAL,0,0.0
-AMT_CREDIT,0,0.0
-NAME_INCOME_TYPE,0,0.0
-NAME_EDUCATION_TYPE,0,0.0
-NAME_FAMILY_STATUS,0,0.0
-NAME_HOUSING_TYPE,0,0.0
-REGION_POPULATION_RELATIVE,0,0.0
-DAYS_BIRTH,0,0.0
-DAYS_EMPLOYED,0,0.0
-DAYS_REGISTRATION,0,0.0
-DAYS_ID_PUBLISH,0,0.0
-FLAG_MOBIL,0,0.0
-FLAG_EMP_PHONE,0,0.0
-FLAG_WORK_PHONE,0,0.0
-FLAG_CONT_MOBILE,0,0.0
-FLAG_PHONE,0,0.0
-FLAG_EMAIL,0,0.0
-REGION_RATING_CLIENT,0,0.0
-REGION_RATING_CLIENT_W_CITY,0,0.0
-WEEKDAY_APPR_PROCESS_START,0,0.0
-HOUR_APPR_PROCESS_START,0,0.0
-REG_REGION_NOT_LIVE_REGION,0,0.0
-REG_REGION_NOT_WORK_REGION,0,0.0
-LIVE_REGION_NOT_WORK_REGION,0,0.0
-REG_CITY_NOT_LIVE_CITY,0,0.0
-REG_CITY_NOT_WORK_CITY,0,0.0
-LIVE_CITY_NOT_WORK_CITY,0,0.0
-ORGANIZATION_TYPE,0,0.0
-FLAG_DOCUMENT_2,0,0.0
-FLAG_DOCUMENT_3,0,0.0
-FLAG_DOCUMENT_4,0,0.0
-FLAG_DOCUMENT_5,0,0.0
-FLAG_DOCUMENT_6,0,0.0
-FLAG_DOCUMENT_7,0,0.0
-FLAG_DOCUMENT_8,0,0.0
-FLAG_DOCUMENT_9,0,0.0
-FLAG_DOCUMENT_10,0,0.0
-FLAG_DOCUMENT_11,0,0.0
-FLAG_DOCUMENT_12,0,0.0
-FLAG_DOCUMENT_13,0,0.0
-FLAG_DOCUMENT_14,0,0.0
-FLAG_DOCUMENT_15,0,0.0
-FLAG_DOCUMENT_16,0,0.0
-FLAG_DOCUMENT_17,0,0.0
-FLAG_DOCUMENT_18,0,0.0
-FLAG_DOCUMENT_19,0,0.0
-FLAG_DOCUMENT_20,0,0.0
-FLAG_DOCUMENT_21,0,0.0
-DAYS_LAST_PHONE_CHANGE,1,0.0
-CNT_FAM_MEMBERS,2,0.0
-AMT_ANNUITY,12,0.0
-AMT_GOODS_PRICE,278,0.09
-EXT_SOURCE_2,660,0.21
-OBS_30_CNT_SOCIAL_CIRCLE,1021,0.33
-DEF_30_CNT_SOCIAL_CIRCLE,1021,0.33
-OBS_60_CNT_SOCIAL_CIRCLE,1021,0.33
-DEF_60_CNT_SOCIAL_CIRCLE,1021,0.33
-NAME_TYPE_SUITE,1292,0.42
-AMT_REQ_CREDIT_BUREAU_HOUR,41519,13.5
-AMT_REQ_CREDIT_BUREAU_DAY,41519,13.5
-AMT_REQ_CREDIT_BUREAU_WEEK,41519,13.5
-AMT_REQ_CREDIT_BUREAU_MON,41519,13.5
-AMT_REQ_CREDIT_BUREAU_QRT,41519,13.5
-AMT_REQ_CREDIT_BUREAU_YEAR,41519,13.5
-EXT_SOURCE_3,60965,19.83
-OCCUPATION_TYPE,96391,31.35
-EMERGENCYSTATE_MODE,145755,47.4
-TOTALAREA_MODE,148431,48.27
-YEARS_BEGINEXPLUATATION_AVG,150007,48.78
-YEARS_BEGINEXPLUATATION_MODE,150007,48.78
-YEARS_BEGINEXPLUATATION_MEDI,150007,48.78
-FLOORSMAX_AVG,153020,49.76
-FLOORSMAX_MODE,153020,49.76
-FLOORSMAX_MEDI,153020,49.76
-HOUSETYPE_MODE,154297,50.18
-LIVINGAREA_AVG,154350,50.19
-LIVINGAREA_MODE,154350,50.19
-LIVINGAREA_MEDI,154350,50.19
-ENTRANCES_AVG,154828,50.35
-ENTRANCES_MODE,154828,50.35
-ENTRANCES_MEDI,154828,50.35
-APARTMENTS_AVG,156061,50.75
-APARTMENTS_MODE,156061,50.75
-APARTMENTS_MEDI,156061,50.75
-WALLSMATERIAL_MODE,156341,50.84
-ELEVATORS_AVG,163891,53.3
-ELEVATORS_MODE,163891,53.3
-ELEVATORS_MEDI,163891,53.3
-NONLIVINGAREA_AVG,169682,55.18
-NONLIVINGAREA_MODE,169682,55.18
-NONLIVINGAREA_MEDI,169682,55.18
-EXT_SOURCE_1,173378,56.38
-BASEMENTAREA_AVG,179943,58.52
-BASEMENTAREA_MODE,179943,58.52
-BASEMENTAREA_MEDI,179943,58.52
-LANDAREA_AVG,182590,59.38
-LANDAREA_MODE,182590,59.38
-LANDAREA_MEDI,182590,59.38
-OWN_CAR_AGE,202929,65.99
-YEARS_BUILD_AVG,204488,66.5
-YEARS_BUILD_MODE,204488,66.5
-YEARS_BUILD_MEDI,204488,66.5
-FLOORSMIN_AVG,208642,67.85
-FLOORSMIN_MODE,208642,67.85
-FLOORSMIN_MEDI,208642,67.85
-LIVINGAPARTMENTS_AVG,210199,68.35
-LIVINGAPARTMENTS_MODE,210199,68.35
-LIVINGAPARTMENTS_MEDI,210199,68.35
-FONDKAPREMONT_MODE,210295,68.39
-NONLIVINGAPARTMENTS_AVG,213514,69.43
-NONLIVINGAPARTMENTS_MODE,213514,69.43
-NONLIVINGAPARTMENTS_MEDI,213514,69.43
-COMMONAREA_AVG,214865,69.87
-COMMONAREA_MODE,214865,69.87
-COMMONAREA_MEDI,214865,69.87
+,Filename, Column Name, Missing Values, Percentage Missing
+1, HomeCredit_columns_description.csv, _c0, 0, 0.0
+2, HomeCredit_columns_description.csv, Table, 0, 0.0
+3, HomeCredit_columns_description.csv, Row, 0, 0.0
+4, HomeCredit_columns_description.csv, Description, 0, 0.0
+5, HomeCredit_columns_description.csv, Special, 133, 60.73
+6, POS_CASH_balance.csv, SK_ID_PREV, 0, 0.0
+7, POS_CASH_balance.csv, SK_ID_CURR, 0, 0.0
+8, POS_CASH_balance.csv, MONTHS_BALANCE, 0, 0.0
+9, POS_CASH_balance.csv, NAME_CONTRACT_STATUS, 0, 0.0
+10, POS_CASH_balance.csv, SK_DPD, 0, 0.0
+11, POS_CASH_balance.csv, SK_DPD_DEF, 0, 0.0
+12, POS_CASH_balance.csv, CNT_INSTALMENT, 26071, 0.26
+13, POS_CASH_balance.csv, CNT_INSTALMENT_FUTURE, 26087, 0.26
+14, application_train.csv, SK_ID_CURR, 0, 0.0
+15, application_train.csv, TARGET, 0, 0.0
+16, application_train.csv, NAME_CONTRACT_TYPE, 0, 0.0
+17, application_train.csv, CODE_GENDER, 0, 0.0
+18, application_train.csv, FLAG_OWN_CAR, 0, 0.0
+19, application_train.csv, FLAG_OWN_REALTY, 0, 0.0
+20, application_train.csv, CNT_CHILDREN, 0, 0.0
+21, application_train.csv, AMT_INCOME_TOTAL, 0, 0.0
+22, application_train.csv, AMT_CREDIT, 0, 0.0
+23, application_train.csv, NAME_INCOME_TYPE, 0, 0.0
+24, application_train.csv, NAME_EDUCATION_TYPE, 0, 0.0
+25, application_train.csv, NAME_FAMILY_STATUS, 0, 0.0
+26, application_train.csv, NAME_HOUSING_TYPE, 0, 0.0
+27, application_train.csv, REGION_POPULATION_RELATIVE, 0, 0.0
+28, application_train.csv, DAYS_BIRTH, 0, 0.0
+29, application_train.csv, DAYS_EMPLOYED, 0, 0.0
+30, application_train.csv, DAYS_REGISTRATION, 0, 0.0
+31, application_train.csv, DAYS_ID_PUBLISH, 0, 0.0
+32, application_train.csv, FLAG_MOBIL, 0, 0.0
+33, application_train.csv, FLAG_EMP_PHONE, 0, 0.0
+34, application_train.csv, FLAG_WORK_PHONE, 0, 0.0
+35, application_train.csv, FLAG_CONT_MOBILE, 0, 0.0
+36, application_train.csv, FLAG_PHONE, 0, 0.0
+37, application_train.csv, FLAG_EMAIL, 0, 0.0
+38, application_train.csv, REGION_RATING_CLIENT, 0, 0.0
+39, application_train.csv, REGION_RATING_CLIENT_W_CITY, 0, 0.0
+40, application_train.csv, WEEKDAY_APPR_PROCESS_START, 0, 0.0
+41, application_train.csv, HOUR_APPR_PROCESS_START, 0, 0.0
+42, application_train.csv, REG_REGION_NOT_LIVE_REGION, 0, 0.0
+43, application_train.csv, REG_REGION_NOT_WORK_REGION, 0, 0.0
+44, application_train.csv, LIVE_REGION_NOT_WORK_REGION, 0, 0.0
+45, application_train.csv, REG_CITY_NOT_LIVE_CITY, 0, 0.0
+46, application_train.csv, REG_CITY_NOT_WORK_CITY, 0, 0.0
+47, application_train.csv, LIVE_CITY_NOT_WORK_CITY, 0, 0.0
+48, application_train.csv, ORGANIZATION_TYPE, 0, 0.0
+49, application_train.csv, FLAG_DOCUMENT_2, 0, 0.0
+50, application_train.csv, FLAG_DOCUMENT_3, 0, 0.0
+51, application_train.csv, FLAG_DOCUMENT_4, 0, 0.0
+52, application_train.csv, FLAG_DOCUMENT_5, 0, 0.0
+53, application_train.csv, FLAG_DOCUMENT_6, 0, 0.0
+54, application_train.csv, FLAG_DOCUMENT_7, 0, 0.0
+55, application_train.csv, FLAG_DOCUMENT_8, 0, 0.0
+56, application_train.csv, FLAG_DOCUMENT_9, 0, 0.0
+57, application_train.csv, FLAG_DOCUMENT_10, 0, 0.0
+58, application_train.csv, FLAG_DOCUMENT_11, 0, 0.0
+59, application_train.csv, FLAG_DOCUMENT_12, 0, 0.0
+60, application_train.csv, FLAG_DOCUMENT_13, 0, 0.0
+61, application_train.csv, FLAG_DOCUMENT_14, 0, 0.0
+62, application_train.csv, FLAG_DOCUMENT_15, 0, 0.0
+63, application_train.csv, FLAG_DOCUMENT_16, 0, 0.0
+64, application_train.csv, FLAG_DOCUMENT_17, 0, 0.0
+65, application_train.csv, FLAG_DOCUMENT_18, 0, 0.0
+66, application_train.csv, FLAG_DOCUMENT_19, 0, 0.0
+67, application_train.csv, FLAG_DOCUMENT_20, 0, 0.0
+68, application_train.csv, FLAG_DOCUMENT_21, 0, 0.0
+69, application_train.csv, DAYS_LAST_PHONE_CHANGE, 1, 0.0
+70, application_train.csv, CNT_FAM_MEMBERS, 2, 0.0
+71, application_train.csv, AMT_ANNUITY, 12, 0.0
+72, application_train.csv, AMT_GOODS_PRICE, 278, 0.09
+73, application_train.csv, EXT_SOURCE_2, 660, 0.21
+74, application_train.csv, OBS_30_CNT_SOCIAL_CIRCLE, 1021, 0.33
+75, application_train.csv, DEF_30_CNT_SOCIAL_CIRCLE, 1021, 0.33
+76, application_train.csv, OBS_60_CNT_SOCIAL_CIRCLE, 1021, 0.33
+77, application_train.csv, DEF_60_CNT_SOCIAL_CIRCLE, 1021, 0.33
+78, application_train.csv, NAME_TYPE_SUITE, 1292, 0.42
+79, application_train.csv, AMT_REQ_CREDIT_BUREAU_HOUR, 41519, 13.5
+80, application_train.csv, AMT_REQ_CREDIT_BUREAU_DAY, 41519, 13.5
+81, application_train.csv, AMT_REQ_CREDIT_BUREAU_WEEK, 41519, 13.5
+82, application_train.csv, AMT_REQ_CREDIT_BUREAU_MON, 41519, 13.5
+83, application_train.csv, AMT_REQ_CREDIT_BUREAU_QRT, 41519, 13.5
+84, application_train.csv, AMT_REQ_CREDIT_BUREAU_YEAR, 41519, 13.5
+85, application_train.csv, EXT_SOURCE_3, 60965, 19.83
+86, application_train.csv, OCCUPATION_TYPE, 96391, 31.35
+87, application_train.csv, EMERGENCYSTATE_MODE, 145755, 47.4
+88, application_train.csv, TOTALAREA_MODE, 148431, 48.27
+89, application_train.csv, YEARS_BEGINEXPLUATATION_AVG, 150007, 48.78
+90, application_train.csv, YEARS_BEGINEXPLUATATION_MODE, 150007, 48.78
+91, application_train.csv, YEARS_BEGINEXPLUATATION_MEDI, 150007, 48.78
+92, application_train.csv, FLOORSMAX_AVG, 153020, 49.76
+93, application_train.csv, FLOORSMAX_MODE, 153020, 49.76
+94, application_train.csv, FLOORSMAX_MEDI, 153020, 49.76
+95, application_train.csv, HOUSETYPE_MODE, 154297, 50.18
+96, application_train.csv, LIVINGAREA_AVG, 154350, 50.19
+97, application_train.csv, LIVINGAREA_MODE, 154350, 50.19
+98, application_train.csv, LIVINGAREA_MEDI, 154350, 50.19
+99, application_train.csv, ENTRANCES_AVG, 154828, 50.35
+100, application_train.csv, ENTRANCES_MODE, 154828, 50.35
+101, application_train.csv, ENTRANCES_MEDI, 154828, 50.35
+102, application_train.csv, APARTMENTS_AVG, 156061, 50.75
+103, application_train.csv, APARTMENTS_MODE, 156061, 50.75
+104, application_train.csv, APARTMENTS_MEDI, 156061, 50.75
+105, application_train.csv, WALLSMATERIAL_MODE, 156341, 50.84
+106, application_train.csv, ELEVATORS_AVG, 163891, 53.3
+107, application_train.csv, ELEVATORS_MODE, 163891, 53.3
+108, application_train.csv, ELEVATORS_MEDI, 163891, 53.3
+109, application_train.csv, NONLIVINGAREA_AVG, 169682, 55.18
+110, application_train.csv, NONLIVINGAREA_MODE, 169682, 55.18
+111, application_train.csv, NONLIVINGAREA_MEDI, 169682, 55.18
+112, application_train.csv, EXT_SOURCE_1, 173378, 56.38
+113, application_train.csv, BASEMENTAREA_AVG, 179943, 58.52
+114, application_train.csv, BASEMENTAREA_MODE, 179943, 58.52
+115, application_train.csv, BASEMENTAREA_MEDI, 179943, 58.52
+116, application_train.csv, LANDAREA_AVG, 182590, 59.38
+117, application_train.csv, LANDAREA_MODE, 182590, 59.38
+118, application_train.csv, LANDAREA_MEDI, 182590, 59.38
+119, application_train.csv, OWN_CAR_AGE, 202929, 65.99
+120, application_train.csv, YEARS_BUILD_AVG, 204488, 66.5
+121, application_train.csv, YEARS_BUILD_MODE, 204488, 66.5
+122, application_train.csv, YEARS_BUILD_MEDI, 204488, 66.5
+123, application_train.csv, FLOORSMIN_AVG, 208642, 67.85
+124, application_train.csv, FLOORSMIN_MODE, 208642, 67.85
+125, application_train.csv, FLOORSMIN_MEDI, 208642, 67.85
+126, application_train.csv, LIVINGAPARTMENTS_AVG, 210199, 68.35
+127, application_train.csv, LIVINGAPARTMENTS_MODE, 210199, 68.35
+128, application_train.csv, LIVINGAPARTMENTS_MEDI, 210199, 68.35
+129, application_train.csv, FONDKAPREMONT_MODE, 210295, 68.39
+130, application_train.csv, NONLIVINGAPARTMENTS_AVG, 213514, 69.43
+131, application_train.csv, NONLIVINGAPARTMENTS_MODE, 213514, 69.43
+132, application_train.csv, NONLIVINGAPARTMENTS_MEDI, 213514, 69.43
+133, application_train.csv, COMMONAREA_AVG, 214865, 69.87
+134, application_train.csv, COMMONAREA_MODE, 214865, 69.87
+135, application_train.csv, COMMONAREA_MEDI, 214865, 69.87
+136, bureau.csv, SK_ID_CURR, 0, 0.0
+137, bureau.csv, SK_ID_BUREAU, 0, 0.0
+138, bureau.csv, CREDIT_ACTIVE, 0, 0.0
+139, bureau.csv, CREDIT_CURRENCY, 0, 0.0
+140, bureau.csv, DAYS_CREDIT, 0, 0.0
+141, bureau.csv, CREDIT_DAY_OVERDUE, 0, 0.0
+142, bureau.csv, CNT_CREDIT_PROLONG, 0, 0.0
+143, bureau.csv, AMT_CREDIT_SUM_OVERDUE, 0, 0.0
+144, bureau.csv, CREDIT_TYPE, 0, 0.0
+145, bureau.csv, DAYS_CREDIT_UPDATE, 0, 0.0
+146, bureau.csv, AMT_CREDIT_SUM, 13, 0.0
+147, bureau.csv, DAYS_CREDIT_ENDDATE, 105553, 6.15
+148, bureau.csv, AMT_CREDIT_SUM_DEBT, 257669, 15.01
+149, bureau.csv, AMT_CREDIT_SUM_LIMIT, 591780, 34.48
+150, bureau.csv, DAYS_ENDDATE_FACT, 633653, 36.92
+151, bureau.csv, AMT_CREDIT_MAX_OVERDUE, 1124488, 65.51
+152, bureau.csv, AMT_ANNUITY, 1226791, 71.47
+153, bureau_balance.csv, SK_ID_BUREAU, 0, 0.0
+154, bureau_balance.csv, MONTHS_BALANCE, 0, 0.0
+155, bureau_balance.csv, STATUS, 0, 0.0
+156, credit_card_balance.csv, SK_ID_PREV, 0, 0.0
+157, credit_card_balance.csv, SK_ID_CURR, 0, 0.0
+158, credit_card_balance.csv, MONTHS_BALANCE, 0, 0.0
+159, credit_card_balance.csv, AMT_BALANCE, 0, 0.0
+160, credit_card_balance.csv, AMT_CREDIT_LIMIT_ACTUAL, 0, 0.0
+161, credit_card_balance.csv, AMT_DRAWINGS_CURRENT, 0, 0.0
+162, credit_card_balance.csv, AMT_PAYMENT_TOTAL_CURRENT, 0, 0.0
+163, credit_card_balance.csv, AMT_RECEIVABLE_PRINCIPAL, 0, 0.0
+164, credit_card_balance.csv, AMT_RECIVABLE, 0, 0.0
+165, credit_card_balance.csv, AMT_TOTAL_RECEIVABLE, 0, 0.0
+166, credit_card_balance.csv, CNT_DRAWINGS_CURRENT, 0, 0.0
+167, credit_card_balance.csv, NAME_CONTRACT_STATUS, 0, 0.0
+168, credit_card_balance.csv, SK_DPD, 0, 0.0
+169, credit_card_balance.csv, SK_DPD_DEF, 0, 0.0
+170, credit_card_balance.csv, AMT_INST_MIN_REGULARITY, 305236, 7.95
+171, credit_card_balance.csv, CNT_INSTALMENT_MATURE_CUM, 305236, 7.95
+172, credit_card_balance.csv, AMT_DRAWINGS_ATM_CURRENT, 749816, 19.52
+173, credit_card_balance.csv, AMT_DRAWINGS_OTHER_CURRENT, 749816, 19.52
+174, credit_card_balance.csv, AMT_DRAWINGS_POS_CURRENT, 749816, 19.52
+175, credit_card_balance.csv, CNT_DRAWINGS_ATM_CURRENT, 749816, 19.52
+176, credit_card_balance.csv, CNT_DRAWINGS_OTHER_CURRENT, 749816, 19.52
+177, credit_card_balance.csv, CNT_DRAWINGS_POS_CURRENT, 749816, 19.52
+178, credit_card_balance.csv, AMT_PAYMENT_CURRENT, 767988, 20.0
+179, installments_payments.csv, SK_ID_PREV, 0, 0.0
+180, installments_payments.csv, SK_ID_CURR, 0, 0.0
+181, installments_payments.csv, NUM_INSTALMENT_VERSION, 0, 0.0
+182, installments_payments.csv, NUM_INSTALMENT_NUMBER, 0, 0.0
+183, installments_payments.csv, DAYS_INSTALMENT, 0, 0.0
+184, installments_payments.csv, AMT_INSTALMENT, 0, 0.0
+185, installments_payments.csv, DAYS_ENTRY_PAYMENT, 2905, 0.02
+186, installments_payments.csv, AMT_PAYMENT, 2905, 0.02
+187, previous_application.csv, SK_ID_PREV, 0, 0.0
+188, previous_application.csv, SK_ID_CURR, 0, 0.0
+189, previous_application.csv, NAME_CONTRACT_TYPE, 0, 0.0
+190, previous_application.csv, AMT_APPLICATION, 0, 0.0
+191, previous_application.csv, WEEKDAY_APPR_PROCESS_START, 0, 0.0
+192, previous_application.csv, HOUR_APPR_PROCESS_START, 0, 0.0
+193, previous_application.csv, FLAG_LAST_APPL_PER_CONTRACT, 0, 0.0
+194, previous_application.csv, NFLAG_LAST_APPL_IN_DAY, 0, 0.0
+195, previous_application.csv, NAME_CASH_LOAN_PURPOSE, 0, 0.0
+196, previous_application.csv, NAME_CONTRACT_STATUS, 0, 0.0
+197, previous_application.csv, DAYS_DECISION, 0, 0.0
+198, previous_application.csv, NAME_PAYMENT_TYPE, 0, 0.0
+199, previous_application.csv, CODE_REJECT_REASON, 0, 0.0
+200, previous_application.csv, NAME_CLIENT_TYPE, 0, 0.0
+201, previous_application.csv, NAME_GOODS_CATEGORY, 0, 0.0
+202, previous_application.csv, NAME_PORTFOLIO, 0, 0.0
+203, previous_application.csv, NAME_PRODUCT_TYPE, 0, 0.0
+204, previous_application.csv, CHANNEL_TYPE, 0, 0.0
+205, previous_application.csv, SELLERPLACE_AREA, 0, 0.0
+206, previous_application.csv, NAME_SELLER_INDUSTRY, 0, 0.0
+207, previous_application.csv, NAME_YIELD_GROUP, 0, 0.0
+208, previous_application.csv, AMT_CREDIT, 1, 0.0
+209, previous_application.csv, PRODUCT_COMBINATION, 346, 0.02
+210, previous_application.csv, CNT_PAYMENT, 372230, 22.29
+211, previous_application.csv, AMT_ANNUITY, 372235, 22.29
+212, previous_application.csv, AMT_GOODS_PRICE, 385515, 23.08
+213, previous_application.csv, DAYS_FIRST_DRAWING, 673065, 40.3
+214, previous_application.csv, DAYS_FIRST_DUE, 673065, 40.3
+215, previous_application.csv, DAYS_LAST_DUE_1ST_VERSION, 673065, 40.3
+216, previous_application.csv, DAYS_LAST_DUE, 673065, 40.3
+217, previous_application.csv, DAYS_TERMINATION, 673065, 40.3
+218, previous_application.csv, NFLAG_INSURED_ON_APPROVAL, 673065, 40.3
+219, previous_application.csv, NAME_TYPE_SUITE, 820405, 49.12
+220, previous_application.csv, AMT_DOWN_PAYMENT, 895844, 53.64
+221, previous_application.csv, RATE_DOWN_PAYMENT, 895844, 53.64
+222, previous_application.csv, RATE_INTEREST_PRIMARY, 1664263, 99.64
+223, previous_application.csv, RATE_INTEREST_PRIVILEGED, 1664263, 99.64
