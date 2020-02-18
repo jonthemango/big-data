@@ -4,9 +4,9 @@
 ## Authors
 [Jon Mongeau](https://github.com/jonthemango)
 
-Ribal Aladeeb - https://github.com/ribal-aladeeb
+[Ribal Aladeeb](https://github.com/ribal-aladeeb)
 
-Feras Younis - https://github.com/FerasYounis
+[Feras Younis](https://github.com/FerasYounis)
 
 
 # Abstract
