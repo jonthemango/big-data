@@ -2,7 +2,7 @@
 [![Code Coverage](https://codecov.io/github/jonthemango/big-data/coverage.svg)](https://codecov.io/gh/jonthemango/big-data)
 
 ## Authors
-Jon Mongeau - https://github.com/jonthemango
+[Jon Mongeau](https://github.com/jonthemango)
 
 Ribal Aladeeb - https://github.com/ribal-aladeeb
 
@@ -10,7 +10,7 @@ Feras Younis - https://github.com/FerasYounis
 
 
 # Abstract
-Many people who lack an extensive credit history find it exceedingly difficult to receive a loan. As a result, these people get taken advantage of by shady lenders. The purpose of this project is to use alternative data about customers to determine whether or not they have the ability to repay their loans. This is a supervised binary classification problem. 
+Many people who lack an extensive credit history find it exceedingly difficult to receive a loan. As a result, these people get taken advantage of by shady lenders. The purpose of this project is to use alternative data about customers to determine whether or not they have the ability to repay their loans. This is a supervised binary classification problem.
 
 The [dataset](https://www.kaggle.com/c/home-credit-default-risk/overview) is provided by Kaggle for a competition. The training data contains 300K+ records of historical customer data labeled 0 or 1 for having repaid the loan or not. There are 122 available columns available to select our features from. The point of the project is to use this historical data to accurately predict if customers can repay loans without requiring their credit history.
 
@@ -38,7 +38,7 @@ Furthermore, we have a combination of about 50M+ records across 7 tables. The co
 # Materials and Methods
 
 ## The Dataset
-The entire dataset emcompasses 7 csv files.  
+The entire dataset emcompasses 7 csv files.
 
 | File Name  | Shape | Description | Imfortant Features
 |---|---|---|---|
@@ -65,7 +65,7 @@ Meaning 91.93 % loans get repaid. We will need to take this into consideration w
 
 ## Technologies and Algorithms
 
-We will use Apache Spark Dataframes and RDDs mostly for pre-processing and Scikit-Learn for training the model. Since we have a large set of potential features we want to implement dynamic feature engineering. The goal is to automate the process of finding the features that yield the best model. We also want to seperate our data dynamically and perform k-fold cross validate to get an average performance of our model. Given our very large set of potential features we will attempt some techniques from feature construction (perhaps polyniomal features) in order to refine our model. 
+We will use Apache Spark Dataframes and RDDs mostly for pre-processing and Scikit-Learn for training the model. Since we have a large set of potential features we want to implement dynamic feature engineering. The goal is to automate the process of finding the features that yield the best model. We also want to seperate our data dynamically and perform k-fold cross validate to get an average performance of our model. Given our very large set of potential features we will attempt some techniques from feature construction (perhaps polyniomal features) in order to refine our model.
 
 For training we will use Skikit-Learn. We are interested in applying packaged algorithms like Descision Trees (Random Forests), kNN and SVMs. We will experiment with other algorithms as we see fit but our plan is to commence with these algorithms. We also plan on using a random classifier in order to establish a baseline.
 
