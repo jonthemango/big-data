@@ -22,6 +22,7 @@ filenames = [
     'previous_application.csv',
     'application_train.csv',
 ]
+
 json_output_file = f'{utils.get_project_root_dir()}preprocessing/missing_values.json'
 csv_output_file = f'{utils.get_project_root_dir()}preprocessing/missing_values.csv'
 
