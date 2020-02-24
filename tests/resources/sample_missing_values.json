@@ -1,0 +1,909 @@
+{
+    "sample/sample_bureau_balance.csv": {
+        "columns": {
+            "SK_ID_BUREAU": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "MONTHS_BALANCE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "STATUS": {
+                "missing_values": 0,
+                "percentage": 0.0
+            }
+        },
+        "complete_features": 3
+    },
+    "sample/sample_bureau.csv": {
+        "columns": {
+            "SK_ID_CURR": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "SK_ID_BUREAU": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "CREDIT_ACTIVE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "CREDIT_CURRENCY": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "DAYS_CREDIT": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "CREDIT_DAY_OVERDUE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "DAYS_CREDIT_ENDDATE": {
+                "missing_values": 2,
+                "percentage": 10.53
+            },
+            "DAYS_ENDDATE_FACT": {
+                "missing_values": 12,
+                "percentage": 63.16
+            },
+            "AMT_CREDIT_MAX_OVERDUE": {
+                "missing_values": 10,
+                "percentage": 52.63
+            },
+            "CNT_CREDIT_PROLONG": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_CREDIT_SUM": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_CREDIT_SUM_DEBT": {
+                "missing_values": 6,
+                "percentage": 31.58
+            },
+            "AMT_CREDIT_SUM_LIMIT": {
+                "missing_values": 10,
+                "percentage": 52.63
+            },
+            "AMT_CREDIT_SUM_OVERDUE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "CREDIT_TYPE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "DAYS_CREDIT_UPDATE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_ANNUITY": {
+                "missing_values": 19,
+                "percentage": 100.0
+            }
+        },
+        "complete_features": 11
+    },
+    "sample/sample_credit_card_balance.csv": {
+        "columns": {
+            "SK_ID_PREV": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "SK_ID_CURR": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "MONTHS_BALANCE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_BALANCE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_CREDIT_LIMIT_ACTUAL": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_DRAWINGS_ATM_CURRENT": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_DRAWINGS_CURRENT": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_DRAWINGS_OTHER_CURRENT": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_DRAWINGS_POS_CURRENT": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_INST_MIN_REGULARITY": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_PAYMENT_CURRENT": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_PAYMENT_TOTAL_CURRENT": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_RECEIVABLE_PRINCIPAL": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_RECIVABLE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_TOTAL_RECEIVABLE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "CNT_DRAWINGS_ATM_CURRENT": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "CNT_DRAWINGS_CURRENT": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "CNT_DRAWINGS_OTHER_CURRENT": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "CNT_DRAWINGS_POS_CURRENT": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "CNT_INSTALMENT_MATURE_CUM": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "NAME_CONTRACT_STATUS": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "SK_DPD": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "SK_DPD_DEF": {
+                "missing_values": 0,
+                "percentage": 0.0
+            }
+        },
+        "complete_features": 23
+    },
+    "sample/sample_installments_payments.csv": {
+        "columns": {
+            "SK_ID_PREV": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "SK_ID_CURR": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "NUM_INSTALMENT_VERSION": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "NUM_INSTALMENT_NUMBER": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "DAYS_INSTALMENT": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "DAYS_ENTRY_PAYMENT": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_INSTALMENT": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_PAYMENT": {
+                "missing_values": 0,
+                "percentage": 0.0
+            }
+        },
+        "complete_features": 8
+    },
+    "sample/sample_POS_CASH_balance.csv": {
+        "columns": {
+            "SK_ID_PREV": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "SK_ID_CURR": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "MONTHS_BALANCE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "CNT_INSTALMENT": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "CNT_INSTALMENT_FUTURE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "NAME_CONTRACT_STATUS": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "SK_DPD": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "SK_DPD_DEF": {
+                "missing_values": 0,
+                "percentage": 0.0
+            }
+        },
+        "complete_features": 8
+    },
+    "sample/sample_previous_application.csv": {
+        "columns": {
+            "SK_ID_PREV": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "SK_ID_CURR": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "NAME_CONTRACT_TYPE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_ANNUITY": {
+                "missing_values": 4,
+                "percentage": 21.05
+            },
+            "AMT_APPLICATION": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_CREDIT": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_DOWN_PAYMENT": {
+                "missing_values": 14,
+                "percentage": 73.68
+            },
+            "AMT_GOODS_PRICE": {
+                "missing_values": 4,
+                "percentage": 21.05
+            },
+            "WEEKDAY_APPR_PROCESS_START": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "HOUR_APPR_PROCESS_START": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_LAST_APPL_PER_CONTRACT": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "NFLAG_LAST_APPL_IN_DAY": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "RATE_DOWN_PAYMENT": {
+                "missing_values": 14,
+                "percentage": 73.68
+            },
+            "RATE_INTEREST_PRIMARY": {
+                "missing_values": 18,
+                "percentage": 94.74
+            },
+            "RATE_INTEREST_PRIVILEGED": {
+                "missing_values": 18,
+                "percentage": 94.74
+            },
+            "NAME_CASH_LOAN_PURPOSE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "NAME_CONTRACT_STATUS": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "DAYS_DECISION": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "NAME_PAYMENT_TYPE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "CODE_REJECT_REASON": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "NAME_TYPE_SUITE": {
+                "missing_values": 8,
+                "percentage": 42.11
+            },
+            "NAME_CLIENT_TYPE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "NAME_GOODS_CATEGORY": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "NAME_PORTFOLIO": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "NAME_PRODUCT_TYPE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "CHANNEL_TYPE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "SELLERPLACE_AREA": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "NAME_SELLER_INDUSTRY": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "CNT_PAYMENT": {
+                "missing_values": 4,
+                "percentage": 21.05
+            },
+            "NAME_YIELD_GROUP": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "PRODUCT_COMBINATION": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "DAYS_FIRST_DRAWING": {
+                "missing_values": 6,
+                "percentage": 31.58
+            },
+            "DAYS_FIRST_DUE": {
+                "missing_values": 6,
+                "percentage": 31.58
+            },
+            "DAYS_LAST_DUE_1ST_VERSION": {
+                "missing_values": 6,
+                "percentage": 31.58
+            },
+            "DAYS_LAST_DUE": {
+                "missing_values": 6,
+                "percentage": 31.58
+            },
+            "DAYS_TERMINATION": {
+                "missing_values": 6,
+                "percentage": 31.58
+            },
+            "NFLAG_INSURED_ON_APPROVAL": {
+                "missing_values": 6,
+                "percentage": 31.58
+            }
+        },
+        "complete_features": 23
+    },
+    "sample/sample_application_train.csv": {
+        "columns": {
+            "SK_ID_CURR": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "TARGET": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "NAME_CONTRACT_TYPE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "CODE_GENDER": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_OWN_CAR": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_OWN_REALTY": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "CNT_CHILDREN": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_INCOME_TOTAL": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_CREDIT": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_ANNUITY": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_GOODS_PRICE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "NAME_TYPE_SUITE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "NAME_INCOME_TYPE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "NAME_EDUCATION_TYPE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "NAME_FAMILY_STATUS": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "NAME_HOUSING_TYPE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "REGION_POPULATION_RELATIVE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "DAYS_BIRTH": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "DAYS_EMPLOYED": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "DAYS_REGISTRATION": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "DAYS_ID_PUBLISH": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "OWN_CAR_AGE": {
+                "missing_values": 14,
+                "percentage": 73.68
+            },
+            "FLAG_MOBIL": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_EMP_PHONE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_WORK_PHONE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_CONT_MOBILE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_PHONE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_EMAIL": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "OCCUPATION_TYPE": {
+                "missing_values": 2,
+                "percentage": 10.53
+            },
+            "CNT_FAM_MEMBERS": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "REGION_RATING_CLIENT": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "REGION_RATING_CLIENT_W_CITY": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "WEEKDAY_APPR_PROCESS_START": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "HOUR_APPR_PROCESS_START": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "REG_REGION_NOT_LIVE_REGION": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "REG_REGION_NOT_WORK_REGION": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "LIVE_REGION_NOT_WORK_REGION": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "REG_CITY_NOT_LIVE_CITY": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "REG_CITY_NOT_WORK_CITY": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "LIVE_CITY_NOT_WORK_CITY": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "ORGANIZATION_TYPE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "EXT_SOURCE_1": {
+                "missing_values": 10,
+                "percentage": 52.63
+            },
+            "EXT_SOURCE_2": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "EXT_SOURCE_3": {
+                "missing_values": 6,
+                "percentage": 31.58
+            },
+            "APARTMENTS_AVG": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "BASEMENTAREA_AVG": {
+                "missing_values": 14,
+                "percentage": 73.68
+            },
+            "YEARS_BEGINEXPLUATATION_AVG": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "YEARS_BUILD_AVG": {
+                "missing_values": 14,
+                "percentage": 73.68
+            },
+            "COMMONAREA_AVG": {
+                "missing_values": 14,
+                "percentage": 73.68
+            },
+            "ELEVATORS_AVG": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "ENTRANCES_AVG": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "FLOORSMAX_AVG": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "FLOORSMIN_AVG": {
+                "missing_values": 14,
+                "percentage": 73.68
+            },
+            "LANDAREA_AVG": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "LIVINGAPARTMENTS_AVG": {
+                "missing_values": 14,
+                "percentage": 73.68
+            },
+            "LIVINGAREA_AVG": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "NONLIVINGAPARTMENTS_AVG": {
+                "missing_values": 14,
+                "percentage": 73.68
+            },
+            "NONLIVINGAREA_AVG": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "APARTMENTS_MODE": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "BASEMENTAREA_MODE": {
+                "missing_values": 14,
+                "percentage": 73.68
+            },
+            "YEARS_BEGINEXPLUATATION_MODE": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "YEARS_BUILD_MODE": {
+                "missing_values": 14,
+                "percentage": 73.68
+            },
+            "COMMONAREA_MODE": {
+                "missing_values": 14,
+                "percentage": 73.68
+            },
+            "ELEVATORS_MODE": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "ENTRANCES_MODE": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "FLOORSMAX_MODE": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "FLOORSMIN_MODE": {
+                "missing_values": 14,
+                "percentage": 73.68
+            },
+            "LANDAREA_MODE": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "LIVINGAPARTMENTS_MODE": {
+                "missing_values": 14,
+                "percentage": 73.68
+            },
+            "LIVINGAREA_MODE": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "NONLIVINGAPARTMENTS_MODE": {
+                "missing_values": 14,
+                "percentage": 73.68
+            },
+            "NONLIVINGAREA_MODE": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "APARTMENTS_MEDI": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "BASEMENTAREA_MEDI": {
+                "missing_values": 14,
+                "percentage": 73.68
+            },
+            "YEARS_BEGINEXPLUATATION_MEDI": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "YEARS_BUILD_MEDI": {
+                "missing_values": 14,
+                "percentage": 73.68
+            },
+            "COMMONAREA_MEDI": {
+                "missing_values": 14,
+                "percentage": 73.68
+            },
+            "ELEVATORS_MEDI": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "ENTRANCES_MEDI": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "FLOORSMAX_MEDI": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "FLOORSMIN_MEDI": {
+                "missing_values": 14,
+                "percentage": 73.68
+            },
+            "LANDAREA_MEDI": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "LIVINGAPARTMENTS_MEDI": {
+                "missing_values": 14,
+                "percentage": 73.68
+            },
+            "LIVINGAREA_MEDI": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "NONLIVINGAPARTMENTS_MEDI": {
+                "missing_values": 14,
+                "percentage": 73.68
+            },
+            "NONLIVINGAREA_MEDI": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "FONDKAPREMONT_MODE": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "HOUSETYPE_MODE": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "TOTALAREA_MODE": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "WALLSMATERIAL_MODE": {
+                "missing_values": 14,
+                "percentage": 73.68
+            },
+            "EMERGENCYSTATE_MODE": {
+                "missing_values": 13,
+                "percentage": 68.42
+            },
+            "OBS_30_CNT_SOCIAL_CIRCLE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "DEF_30_CNT_SOCIAL_CIRCLE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "OBS_60_CNT_SOCIAL_CIRCLE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "DEF_60_CNT_SOCIAL_CIRCLE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "DAYS_LAST_PHONE_CHANGE": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_DOCUMENT_2": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_DOCUMENT_3": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_DOCUMENT_4": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_DOCUMENT_5": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_DOCUMENT_6": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_DOCUMENT_7": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_DOCUMENT_8": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_DOCUMENT_9": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_DOCUMENT_10": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_DOCUMENT_11": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_DOCUMENT_12": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_DOCUMENT_13": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_DOCUMENT_14": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_DOCUMENT_15": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_DOCUMENT_16": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_DOCUMENT_17": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_DOCUMENT_18": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_DOCUMENT_19": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_DOCUMENT_20": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "FLAG_DOCUMENT_21": {
+                "missing_values": 0,
+                "percentage": 0.0
+            },
+            "AMT_REQ_CREDIT_BUREAU_HOUR": {
+                "missing_values": 4,
+                "percentage": 21.05
+            },
+            "AMT_REQ_CREDIT_BUREAU_DAY": {
+                "missing_values": 4,
+                "percentage": 21.05
+            },
+            "AMT_REQ_CREDIT_BUREAU_WEEK": {
+                "missing_values": 4,
+                "percentage": 21.05
+            },
+            "AMT_REQ_CREDIT_BUREAU_MON": {
+                "missing_values": 4,
+                "percentage": 21.05
+            },
+            "AMT_REQ_CREDIT_BUREAU_QRT": {
+                "missing_values": 4,
+                "percentage": 21.05
+            },
+            "AMT_REQ_CREDIT_BUREAU_YEAR": {
+                "missing_values": 4,
+                "percentage": 21.05
+            }
+        },
+        "complete_features": 65
+    }
+}

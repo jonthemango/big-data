@@ -28,6 +28,7 @@ csv_output_file = f'{utils.get_project_root_dir()}preprocessing/missing_values.c
 
 
 def driver():
+    '''This is the full process of analysing columns in all data file'''
     report: dict = analyse_columns_in_all_data_files(filenames)
 
     json_report: str = json.dumps(report, indent=4)
@@ -39,20 +40,45 @@ def driver():
     print(f'View {json_output_file} and {csv_output_file} for result')
 
 
-def write2file(string, filename):
+def sample_driver():
+    '''This is the same as driver but only on the sample data (for testing purposes)'''
+
+    filenames = [
+        'sample/sample_bureau_balance.csv',
+        'sample/sample_bureau.csv',
+        'sample/sample_credit_card_balance.csv',
+        'sample/sample_installments_payments.csv',
+        'sample/sample_POS_CASH_balance.csv',
+        'sample/sample_previous_application.csv',
+        'sample/sample_application_train.csv',
+    ]
+    sample_json_output_file = f'{utils.get_project_root_dir()}preprocessing/sample_missing_values.json'
+    sample_csv_output_file = f'{utils.get_project_root_dir()}preprocessing/sample_missing_values.csv'
+
+    report: dict = analyse_columns_in_all_data_files(filenames)
+    json_report: str = json.dumps(report, indent=4)
+    write2file(json_report, sample_json_output_file)
+
+    csv_report: str = generate_csv_from_json(json_output_file)
+    write2file(csv_report, sample_csv_output_file)
+
+    print(f'View {sample_json_output_file} and {sample_csv_output_file} for result')
+
+
+def write2file(string, filename: str):
     ''' helper function, which overwrites contents of filename if exists'''
     with open(filename, 'w')as file:
         file.write(string)
 
 
-def find_missing_by_column(data, column):
+def find_missing_by_column(data, column: str):
     total_records = data.count()
     count_missing = data.where(f"{column} is null").count()
     percent = round(count_missing/total_records*100, 2)
     return (count_missing, percent)
 
 
-def generate_dict_of_missing_values(filename):
+def generate_dict_of_missing_values(filename: str):
     spark = utils.init_spark()
     data = spark.read.csv(filename, header=True)
     columns = data.columns
@@ -77,7 +103,7 @@ def generate_dict_of_missing_values(filename):
     return report
 
 
-def analyse_columns_in_all_data_files(filenames):
+def analyse_columns_in_all_data_files(filenames: list):
     final_report = {}
     for file in filenames:
         file_path = f'{data_directory}{file}'
@@ -109,3 +135,4 @@ def generate_csv_from_json(json_filename: str):
                 csv_text += f'{count}, {file}, {column}, {missing_values}, {percent}\n'
 
     return csv_text
+
