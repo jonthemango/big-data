@@ -2,14 +2,17 @@
     "bureau_balance.csv": {
         "columns": {
             "SK_ID_BUREAU": {
+                "unique_count": 817395,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "MONTHS_BALANCE": {
+                "unique_count": 97,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "STATUS": {
+                "unique_count": 8,
                 "missing_values": 0,
                 "percentage": 0.0
             }
@@ -19,70 +22,87 @@
     "bureau.csv": {
         "columns": {
             "SK_ID_CURR": {
+                "unique_count": 305811,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "SK_ID_BUREAU": {
+                "unique_count": 1716428,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "CREDIT_ACTIVE": {
+                "unique_count": 4,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "CREDIT_CURRENCY": {
+                "unique_count": 4,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "DAYS_CREDIT": {
+                "unique_count": 2923,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "CREDIT_DAY_OVERDUE": {
+                "unique_count": 942,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "DAYS_CREDIT_ENDDATE": {
+                "unique_count": 14097,
                 "missing_values": 105553,
                 "percentage": 6.15
             },
             "DAYS_ENDDATE_FACT": {
+                "unique_count": 2918,
                 "missing_values": 633653,
                 "percentage": 36.92
             },
             "AMT_CREDIT_MAX_OVERDUE": {
+                "unique_count": 68252,
                 "missing_values": 1124488,
                 "percentage": 65.51
             },
             "CNT_CREDIT_PROLONG": {
+                "unique_count": 10,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "AMT_CREDIT_SUM": {
+                "unique_count": 236709,
                 "missing_values": 13,
                 "percentage": 0.0
             },
             "AMT_CREDIT_SUM_DEBT": {
+                "unique_count": 226538,
                 "missing_values": 257669,
                 "percentage": 15.01
             },
             "AMT_CREDIT_SUM_LIMIT": {
+                "unique_count": 51727,
                 "missing_values": 591780,
                 "percentage": 34.48
             },
             "AMT_CREDIT_SUM_OVERDUE": {
+                "unique_count": 1616,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "CREDIT_TYPE": {
+                "unique_count": 15,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "DAYS_CREDIT_UPDATE": {
+                "unique_count": 2982,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "AMT_ANNUITY": {
+                "unique_count": 40322,
                 "missing_values": 1226791,
                 "percentage": 71.47
             }
@@ -92,94 +112,117 @@
     "credit_card_balance.csv": {
         "columns": {
             "SK_ID_PREV": {
+                "unique_count": 104307,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "SK_ID_CURR": {
+                "unique_count": 103558,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "MONTHS_BALANCE": {
+                "unique_count": 96,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "AMT_BALANCE": {
+                "unique_count": 1347904,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "AMT_CREDIT_LIMIT_ACTUAL": {
+                "unique_count": 181,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "AMT_DRAWINGS_ATM_CURRENT": {
+                "unique_count": 2268,
                 "missing_values": 749816,
                 "percentage": 19.52
             },
             "AMT_DRAWINGS_CURRENT": {
+                "unique_count": 187005,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "AMT_DRAWINGS_OTHER_CURRENT": {
+                "unique_count": 1833,
                 "missing_values": 749816,
                 "percentage": 19.52
             },
             "AMT_DRAWINGS_POS_CURRENT": {
+                "unique_count": 168749,
                 "missing_values": 749816,
                 "percentage": 19.52
             },
             "AMT_INST_MIN_REGULARITY": {
+                "unique_count": 312267,
                 "missing_values": 305236,
                 "percentage": 7.95
             },
             "AMT_PAYMENT_CURRENT": {
+                "unique_count": 163210,
                 "missing_values": 767988,
                 "percentage": 20.0
             },
             "AMT_PAYMENT_TOTAL_CURRENT": {
+                "unique_count": 182957,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "AMT_RECEIVABLE_PRINCIPAL": {
+                "unique_count": 1195839,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "AMT_RECIVABLE": {
+                "unique_count": 1338878,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "AMT_TOTAL_RECEIVABLE": {
+                "unique_count": 1339008,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "CNT_DRAWINGS_ATM_CURRENT": {
+                "unique_count": 45,
                 "missing_values": 749816,
                 "percentage": 19.52
             },
             "CNT_DRAWINGS_CURRENT": {
+                "unique_count": 129,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "CNT_DRAWINGS_OTHER_CURRENT": {
+                "unique_count": 12,
                 "missing_values": 749816,
                 "percentage": 19.52
             },
             "CNT_DRAWINGS_POS_CURRENT": {
+                "unique_count": 134,
                 "missing_values": 749816,
                 "percentage": 19.52
             },
             "CNT_INSTALMENT_MATURE_CUM": {
+                "unique_count": 122,
                 "missing_values": 305236,
                 "percentage": 7.95
             },
             "NAME_CONTRACT_STATUS": {
+                "unique_count": 7,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "SK_DPD": {
+                "unique_count": 917,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "SK_DPD_DEF": {
+                "unique_count": 378,
                 "missing_values": 0,
                 "percentage": 0.0
             }
@@ -189,34 +232,42 @@
     "installments_payments.csv": {
         "columns": {
             "SK_ID_PREV": {
+                "unique_count": 997752,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "SK_ID_CURR": {
+                "unique_count": 339587,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "NUM_INSTALMENT_VERSION": {
+                "unique_count": 65,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "NUM_INSTALMENT_NUMBER": {
+                "unique_count": 277,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "DAYS_INSTALMENT": {
+                "unique_count": 2922,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "DAYS_ENTRY_PAYMENT": {
+                "unique_count": 3040,
                 "missing_values": 2905,
                 "percentage": 0.02
             },
             "AMT_INSTALMENT": {
+                "unique_count": 902539,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "AMT_PAYMENT": {
+                "unique_count": 944236,
                 "missing_values": 2905,
                 "percentage": 0.02
             }
@@ -226,34 +277,42 @@
     "POS_CASH_balance.csv": {
         "columns": {
             "SK_ID_PREV": {
+                "unique_count": 936325,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "SK_ID_CURR": {
+                "unique_count": 337252,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "MONTHS_BALANCE": {
+                "unique_count": 96,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "CNT_INSTALMENT": {
+                "unique_count": 74,
                 "missing_values": 26071,
                 "percentage": 0.26
             },
             "CNT_INSTALMENT_FUTURE": {
+                "unique_count": 80,
                 "missing_values": 26087,
                 "percentage": 0.26
             },
             "NAME_CONTRACT_STATUS": {
+                "unique_count": 9,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "SK_DPD": {
+                "unique_count": 3400,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "SK_DPD_DEF": {
+                "unique_count": 2307,
                 "missing_values": 0,
                 "percentage": 0.0
             }
@@ -263,150 +322,187 @@
     "previous_application.csv": {
         "columns": {
             "SK_ID_PREV": {
+                "unique_count": 1670214,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "SK_ID_CURR": {
+                "unique_count": 338857,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "NAME_CONTRACT_TYPE": {
+                "unique_count": 4,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "AMT_ANNUITY": {
+                "unique_count": 357960,
                 "missing_values": 372235,
                 "percentage": 22.29
             },
             "AMT_APPLICATION": {
+                "unique_count": 93885,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "AMT_CREDIT": {
+                "unique_count": 86804,
                 "missing_values": 1,
                 "percentage": 0.0
             },
             "AMT_DOWN_PAYMENT": {
+                "unique_count": 29279,
                 "missing_values": 895844,
                 "percentage": 53.64
             },
             "AMT_GOODS_PRICE": {
+                "unique_count": 93886,
                 "missing_values": 385515,
                 "percentage": 23.08
             },
             "WEEKDAY_APPR_PROCESS_START": {
+                "unique_count": 7,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "HOUR_APPR_PROCESS_START": {
+                "unique_count": 24,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_LAST_APPL_PER_CONTRACT": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "NFLAG_LAST_APPL_IN_DAY": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "RATE_DOWN_PAYMENT": {
+                "unique_count": 207034,
                 "missing_values": 895844,
                 "percentage": 53.64
             },
             "RATE_INTEREST_PRIMARY": {
+                "unique_count": 149,
                 "missing_values": 1664263,
                 "percentage": 99.64
             },
             "RATE_INTEREST_PRIVILEGED": {
+                "unique_count": 26,
                 "missing_values": 1664263,
                 "percentage": 99.64
             },
             "NAME_CASH_LOAN_PURPOSE": {
+                "unique_count": 25,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "NAME_CONTRACT_STATUS": {
+                "unique_count": 4,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "DAYS_DECISION": {
+                "unique_count": 2922,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "NAME_PAYMENT_TYPE": {
+                "unique_count": 4,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "CODE_REJECT_REASON": {
+                "unique_count": 9,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "NAME_TYPE_SUITE": {
+                "unique_count": 8,
                 "missing_values": 820405,
                 "percentage": 49.12
             },
             "NAME_CLIENT_TYPE": {
+                "unique_count": 4,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "NAME_GOODS_CATEGORY": {
+                "unique_count": 28,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "NAME_PORTFOLIO": {
+                "unique_count": 5,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "NAME_PRODUCT_TYPE": {
+                "unique_count": 3,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "CHANNEL_TYPE": {
+                "unique_count": 8,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "SELLERPLACE_AREA": {
+                "unique_count": 2097,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "NAME_SELLER_INDUSTRY": {
+                "unique_count": 11,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "CNT_PAYMENT": {
+                "unique_count": 50,
                 "missing_values": 372230,
                 "percentage": 22.29
             },
             "NAME_YIELD_GROUP": {
+                "unique_count": 5,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "PRODUCT_COMBINATION": {
+                "unique_count": 18,
                 "missing_values": 346,
                 "percentage": 0.02
             },
             "DAYS_FIRST_DRAWING": {
+                "unique_count": 2839,
                 "missing_values": 673065,
                 "percentage": 40.3
             },
             "DAYS_FIRST_DUE": {
+                "unique_count": 2893,
                 "missing_values": 673065,
                 "percentage": 40.3
             },
             "DAYS_LAST_DUE_1ST_VERSION": {
+                "unique_count": 4606,
                 "missing_values": 673065,
                 "percentage": 40.3
             },
             "DAYS_LAST_DUE": {
+                "unique_count": 2874,
                 "missing_values": 673065,
                 "percentage": 40.3
             },
             "DAYS_TERMINATION": {
+                "unique_count": 2831,
                 "missing_values": 673065,
                 "percentage": 40.3
             },
             "NFLAG_INSURED_ON_APPROVAL": {
+                "unique_count": 3,
                 "missing_values": 673065,
                 "percentage": 40.3
             }
@@ -416,490 +512,612 @@
     "application_train.csv": {
         "columns": {
             "SK_ID_CURR": {
+                "unique_count": 307511,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "TARGET": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "NAME_CONTRACT_TYPE": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "CODE_GENDER": {
+                "unique_count": 3,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_OWN_CAR": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_OWN_REALTY": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "CNT_CHILDREN": {
+                "unique_count": 15,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "AMT_INCOME_TOTAL": {
+                "unique_count": 2548,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "AMT_CREDIT": {
+                "unique_count": 5603,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "AMT_ANNUITY": {
+                "unique_count": 13673,
                 "missing_values": 12,
                 "percentage": 0.0
             },
             "AMT_GOODS_PRICE": {
+                "unique_count": 1003,
                 "missing_values": 278,
                 "percentage": 0.09
             },
             "NAME_TYPE_SUITE": {
+                "unique_count": 8,
                 "missing_values": 1292,
                 "percentage": 0.42
             },
             "NAME_INCOME_TYPE": {
+                "unique_count": 8,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "NAME_EDUCATION_TYPE": {
+                "unique_count": 5,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "NAME_FAMILY_STATUS": {
+                "unique_count": 6,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "NAME_HOUSING_TYPE": {
+                "unique_count": 6,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "REGION_POPULATION_RELATIVE": {
+                "unique_count": 81,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "DAYS_BIRTH": {
+                "unique_count": 17460,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "DAYS_EMPLOYED": {
+                "unique_count": 12574,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "DAYS_REGISTRATION": {
+                "unique_count": 15688,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "DAYS_ID_PUBLISH": {
+                "unique_count": 6168,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "OWN_CAR_AGE": {
+                "unique_count": 63,
                 "missing_values": 202929,
                 "percentage": 65.99
             },
             "FLAG_MOBIL": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_EMP_PHONE": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_WORK_PHONE": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_CONT_MOBILE": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_PHONE": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_EMAIL": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "OCCUPATION_TYPE": {
+                "unique_count": 19,
                 "missing_values": 96391,
                 "percentage": 31.35
             },
             "CNT_FAM_MEMBERS": {
+                "unique_count": 18,
                 "missing_values": 2,
                 "percentage": 0.0
             },
             "REGION_RATING_CLIENT": {
+                "unique_count": 3,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "REGION_RATING_CLIENT_W_CITY": {
+                "unique_count": 3,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "WEEKDAY_APPR_PROCESS_START": {
+                "unique_count": 7,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "HOUR_APPR_PROCESS_START": {
+                "unique_count": 24,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "REG_REGION_NOT_LIVE_REGION": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "REG_REGION_NOT_WORK_REGION": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "LIVE_REGION_NOT_WORK_REGION": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "REG_CITY_NOT_LIVE_CITY": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "REG_CITY_NOT_WORK_CITY": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "LIVE_CITY_NOT_WORK_CITY": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "ORGANIZATION_TYPE": {
+                "unique_count": 58,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "EXT_SOURCE_1": {
+                "unique_count": 114585,
                 "missing_values": 173378,
                 "percentage": 56.38
             },
             "EXT_SOURCE_2": {
+                "unique_count": 119832,
                 "missing_values": 660,
                 "percentage": 0.21
             },
             "EXT_SOURCE_3": {
+                "unique_count": 815,
                 "missing_values": 60965,
                 "percentage": 19.83
             },
             "APARTMENTS_AVG": {
+                "unique_count": 2340,
                 "missing_values": 156061,
                 "percentage": 50.75
             },
             "BASEMENTAREA_AVG": {
+                "unique_count": 3781,
                 "missing_values": 179943,
                 "percentage": 58.52
             },
             "YEARS_BEGINEXPLUATATION_AVG": {
+                "unique_count": 286,
                 "missing_values": 150007,
                 "percentage": 48.78
             },
             "YEARS_BUILD_AVG": {
+                "unique_count": 150,
                 "missing_values": 204488,
                 "percentage": 66.5
             },
             "COMMONAREA_AVG": {
+                "unique_count": 3182,
                 "missing_values": 214865,
                 "percentage": 69.87
             },
             "ELEVATORS_AVG": {
+                "unique_count": 258,
                 "missing_values": 163891,
                 "percentage": 53.3
             },
             "ENTRANCES_AVG": {
+                "unique_count": 286,
                 "missing_values": 154828,
                 "percentage": 50.35
             },
             "FLOORSMAX_AVG": {
+                "unique_count": 404,
                 "missing_values": 153020,
                 "percentage": 49.76
             },
             "FLOORSMIN_AVG": {
+                "unique_count": 306,
                 "missing_values": 208642,
                 "percentage": 67.85
             },
             "LANDAREA_AVG": {
+                "unique_count": 3528,
                 "missing_values": 182590,
                 "percentage": 59.38
             },
             "LIVINGAPARTMENTS_AVG": {
+                "unique_count": 1869,
                 "missing_values": 210199,
                 "percentage": 68.35
             },
             "LIVINGAREA_AVG": {
+                "unique_count": 5200,
                 "missing_values": 154350,
                 "percentage": 50.19
             },
             "NONLIVINGAPARTMENTS_AVG": {
+                "unique_count": 387,
                 "missing_values": 213514,
                 "percentage": 69.43
             },
             "NONLIVINGAREA_AVG": {
+                "unique_count": 3291,
                 "missing_values": 169682,
                 "percentage": 55.18
             },
             "APARTMENTS_MODE": {
+                "unique_count": 761,
                 "missing_values": 156061,
                 "percentage": 50.75
             },
             "BASEMENTAREA_MODE": {
+                "unique_count": 3842,
                 "missing_values": 179943,
                 "percentage": 58.52
             },
             "YEARS_BEGINEXPLUATATION_MODE": {
+                "unique_count": 222,
                 "missing_values": 150007,
                 "percentage": 48.78
             },
             "YEARS_BUILD_MODE": {
+                "unique_count": 155,
                 "missing_values": 204488,
                 "percentage": 66.5
             },
             "COMMONAREA_MODE": {
+                "unique_count": 3129,
                 "missing_values": 214865,
                 "percentage": 69.87
             },
             "ELEVATORS_MODE": {
+                "unique_count": 27,
                 "missing_values": 163891,
                 "percentage": 53.3
             },
             "ENTRANCES_MODE": {
+                "unique_count": 31,
                 "missing_values": 154828,
                 "percentage": 50.35
             },
             "FLOORSMAX_MODE": {
+                "unique_count": 26,
                 "missing_values": 153020,
                 "percentage": 49.76
             },
             "FLOORSMIN_MODE": {
+                "unique_count": 26,
                 "missing_values": 208642,
                 "percentage": 67.85
             },
             "LANDAREA_MODE": {
+                "unique_count": 3564,
                 "missing_values": 182590,
                 "percentage": 59.38
             },
             "LIVINGAPARTMENTS_MODE": {
+                "unique_count": 737,
                 "missing_values": 210199,
                 "percentage": 68.35
             },
             "LIVINGAREA_MODE": {
+                "unique_count": 5302,
                 "missing_values": 154350,
                 "percentage": 50.19
             },
             "NONLIVINGAPARTMENTS_MODE": {
+                "unique_count": 168,
                 "missing_values": 213514,
                 "percentage": 69.43
             },
             "NONLIVINGAREA_MODE": {
+                "unique_count": 3328,
                 "missing_values": 169682,
                 "percentage": 55.18
             },
             "APARTMENTS_MEDI": {
+                "unique_count": 1149,
                 "missing_values": 156061,
                 "percentage": 50.75
             },
             "BASEMENTAREA_MEDI": {
+                "unique_count": 3773,
                 "missing_values": 179943,
                 "percentage": 58.52
             },
             "YEARS_BEGINEXPLUATATION_MEDI": {
+                "unique_count": 246,
                 "missing_values": 150007,
                 "percentage": 48.78
             },
             "YEARS_BUILD_MEDI": {
+                "unique_count": 152,
                 "missing_values": 204488,
                 "percentage": 66.5
             },
             "COMMONAREA_MEDI": {
+                "unique_count": 3203,
                 "missing_values": 214865,
                 "percentage": 69.87
             },
             "ELEVATORS_MEDI": {
+                "unique_count": 47,
                 "missing_values": 163891,
                 "percentage": 53.3
             },
             "ENTRANCES_MEDI": {
+                "unique_count": 47,
                 "missing_values": 154828,
                 "percentage": 50.35
             },
             "FLOORSMAX_MEDI": {
+                "unique_count": 50,
                 "missing_values": 153020,
                 "percentage": 49.76
             },
             "FLOORSMIN_MEDI": {
+                "unique_count": 48,
                 "missing_values": 208642,
                 "percentage": 67.85
             },
             "LANDAREA_MEDI": {
+                "unique_count": 3561,
                 "missing_values": 182590,
                 "percentage": 59.38
             },
             "LIVINGAPARTMENTS_MEDI": {
+                "unique_count": 1098,
                 "missing_values": 210199,
                 "percentage": 68.35
             },
             "LIVINGAREA_MEDI": {
+                "unique_count": 5282,
                 "missing_values": 154350,
                 "percentage": 50.19
             },
             "NONLIVINGAPARTMENTS_MEDI": {
+                "unique_count": 215,
                 "missing_values": 213514,
                 "percentage": 69.43
             },
             "NONLIVINGAREA_MEDI": {
+                "unique_count": 3324,
                 "missing_values": 169682,
                 "percentage": 55.18
             },
             "FONDKAPREMONT_MODE": {
+                "unique_count": 5,
                 "missing_values": 210295,
                 "percentage": 68.39
             },
             "HOUSETYPE_MODE": {
+                "unique_count": 4,
                 "missing_values": 154297,
                 "percentage": 50.18
             },
             "TOTALAREA_MODE": {
+                "unique_count": 5117,
                 "missing_values": 148431,
                 "percentage": 48.27
             },
             "WALLSMATERIAL_MODE": {
+                "unique_count": 8,
                 "missing_values": 156341,
                 "percentage": 50.84
             },
             "EMERGENCYSTATE_MODE": {
+                "unique_count": 3,
                 "missing_values": 145755,
                 "percentage": 47.4
             },
             "OBS_30_CNT_SOCIAL_CIRCLE": {
+                "unique_count": 34,
                 "missing_values": 1021,
                 "percentage": 0.33
             },
             "DEF_30_CNT_SOCIAL_CIRCLE": {
+                "unique_count": 11,
                 "missing_values": 1021,
                 "percentage": 0.33
             },
             "OBS_60_CNT_SOCIAL_CIRCLE": {
+                "unique_count": 34,
                 "missing_values": 1021,
                 "percentage": 0.33
             },
             "DEF_60_CNT_SOCIAL_CIRCLE": {
+                "unique_count": 10,
                 "missing_values": 1021,
                 "percentage": 0.33
             },
             "DAYS_LAST_PHONE_CHANGE": {
+                "unique_count": 3774,
                 "missing_values": 1,
                 "percentage": 0.0
             },
             "FLAG_DOCUMENT_2": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_DOCUMENT_3": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_DOCUMENT_4": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_DOCUMENT_5": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_DOCUMENT_6": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_DOCUMENT_7": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_DOCUMENT_8": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_DOCUMENT_9": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_DOCUMENT_10": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_DOCUMENT_11": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_DOCUMENT_12": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_DOCUMENT_13": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_DOCUMENT_14": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_DOCUMENT_15": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_DOCUMENT_16": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_DOCUMENT_17": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_DOCUMENT_18": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_DOCUMENT_19": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_DOCUMENT_20": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "FLAG_DOCUMENT_21": {
+                "unique_count": 2,
                 "missing_values": 0,
                 "percentage": 0.0
             },
             "AMT_REQ_CREDIT_BUREAU_HOUR": {
+                "unique_count": 6,
                 "missing_values": 41519,
                 "percentage": 13.5
             },
             "AMT_REQ_CREDIT_BUREAU_DAY": {
+                "unique_count": 10,
                 "missing_values": 41519,
                 "percentage": 13.5
             },
             "AMT_REQ_CREDIT_BUREAU_WEEK": {
+                "unique_count": 10,
                 "missing_values": 41519,
                 "percentage": 13.5
             },
             "AMT_REQ_CREDIT_BUREAU_MON": {
+                "unique_count": 25,
                 "missing_values": 41519,
                 "percentage": 13.5
             },
             "AMT_REQ_CREDIT_BUREAU_QRT": {
+                "unique_count": 12,
                 "missing_values": 41519,
                 "percentage": 13.5
             },
             "AMT_REQ_CREDIT_BUREAU_YEAR": {
+                "unique_count": 26,
                 "missing_values": 41519,
                 "percentage": 13.5
             }

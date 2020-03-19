@@ -11,6 +11,8 @@ the training set and outputs a report to 'missing_values.json'. Keep in mind
 that this can take ~7min.
 '''
 
+INCLUDE_UNIQUE_COUNT = False
+
 data_directory = utils.get_project_root_dir() + 'data/'
 
 filenames = [
@@ -23,9 +25,10 @@ filenames = [
     'application_train.csv',
 ]
 
+
+
 json_output_file = f'{utils.get_project_root_dir()}preprocessing/missing_values.json'
 csv_output_file = f'{utils.get_project_root_dir()}preprocessing/missing_values.csv'
-
 
 def driver():
     '''This is the full process of analysing columns in all data file'''
@@ -75,7 +78,13 @@ def find_missing_by_column(data, column: str):
     total_records = data.count()
     count_missing = data.where(f"{column} is null").count()
     percent = round(count_missing/total_records*100, 2)
-    return (count_missing, percent)
+
+    if INCLUDE_UNIQUE_COUNT:
+        unique_count = data.select(column).distinct().count()
+    else:
+        unique_count = "N/A"
+    return (count_missing, percent, unique_count)
+
 
 
 def generate_dict_of_missing_values(filename: str):
@@ -87,8 +96,9 @@ def generate_dict_of_missing_values(filename: str):
 
     for feature in columns:
         iteration += 1
-        absolute, percent = find_missing_by_column(data, feature)
+        absolute, percent, unique_count = find_missing_by_column(data, feature)
         report["columns"][feature] = {
+            "unique_count": unique_count,
             "missing_values": absolute,
             "percentage": percent
         }
@@ -114,7 +124,7 @@ def analyse_columns_in_all_data_files(filenames: list):
 
 def generate_csv_from_json(json_filename: str):
 
-    csv_text: str = ',Filename, Column Name, Missing Values, Percentage Missing\n'
+    csv_text: str = ',Filename, Column Name, Unique Categories, Missing Values, Percentage Missing\n'
     count = 0
     with open(json_filename) as report_file:
 
@@ -130,9 +140,12 @@ def generate_csv_from_json(json_filename: str):
                 count += 1
                 missing_values = str(
                     report[file]["columns"][column]["missing_values"])
+                unique_count = str(
+                    report[file]["columns"][column]["unique_count"]
+                )
 
                 percent = str(report[file]["columns"][column]["percentage"])
-                csv_text += f'{count}, {file}, {column}, {missing_values}, {percent}\n'
+                csv_text += f'{count}, {file}, {column}, {unique_count} , {missing_values}, {percent}\n'
 
     return csv_text
 
