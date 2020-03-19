@@ -40,3 +40,5 @@ def test_report_inmemory_generation():
         filenames)
 
     assert(report == goal_data)
+
+
