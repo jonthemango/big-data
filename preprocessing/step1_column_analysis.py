@@ -11,8 +11,6 @@ the training set and outputs a report to 'missing_values.json'. Keep in mind
 that this can take ~7min.
 '''
 
-INCLUDE_UNIQUE_COUNT = False
-
 data_directory = utils.get_project_root_dir() + 'data/'
 
 filenames = [
@@ -26,13 +24,15 @@ filenames = [
 ]
 
 
-
 json_output_file = f'{utils.get_project_root_dir()}preprocessing/missing_values.json'
 csv_output_file = f'{utils.get_project_root_dir()}preprocessing/missing_values.csv'
 
-def driver():
+
+def driver(include_unique_count=True):
     '''This is the full process of analysing columns in all data file'''
-    report: dict = analyse_columns_in_all_data_files(filenames)
+    print("Running step 1 column analysis driver")
+    report: dict = analyse_columns_in_all_data_files(
+        filenames, include_unique_count=True)
 
     json_report: str = json.dumps(report, indent=4)
     write2file(json_report, json_output_file)
@@ -65,7 +65,8 @@ def sample_driver():
     csv_report: str = generate_csv_from_json(json_output_file)
     write2file(csv_report, sample_csv_output_file)
 
-    print(f'View {sample_json_output_file} and {sample_csv_output_file} for result')
+    print(
+        f'View {sample_json_output_file} and {sample_csv_output_file} for result')
 
 
 def write2file(string, filename: str):
@@ -74,20 +75,19 @@ def write2file(string, filename: str):
         file.write(string)
 
 
-def find_missing_by_column(data, column: str):
+def find_missing_by_column(data, column: str, include_unique_count=True):
     total_records = data.count()
     count_missing = data.where(f"{column} is null").count()
     percent = round(count_missing/total_records*100, 2)
 
-    if INCLUDE_UNIQUE_COUNT:
+    if include_unique_count:
         unique_count = data.select(column).distinct().count()
     else:
         unique_count = "N/A"
     return (count_missing, percent, unique_count)
 
 
-
-def generate_dict_of_missing_values(filename: str):
+def generate_dict_of_missing_values(filename: str, include_unique_count=True):
     spark = utils.init_spark()
     data = spark.read.csv(filename, header=True)
     columns = data.columns
@@ -96,7 +96,8 @@ def generate_dict_of_missing_values(filename: str):
 
     for feature in columns:
         iteration += 1
-        absolute, percent, unique_count = find_missing_by_column(data, feature)
+        absolute, percent, unique_count = find_missing_by_column(
+            data, feature, include_unique_count=True)
         report["columns"][feature] = {
             "unique_count": unique_count,
             "missing_values": absolute,
@@ -113,12 +114,13 @@ def generate_dict_of_missing_values(filename: str):
     return report
 
 
-def analyse_columns_in_all_data_files(filenames: list):
+def analyse_columns_in_all_data_files(filenames: list, include_unique_count=True):
     final_report = {}
     for file in filenames:
         file_path = f'{data_directory}{file}'
         print(f'generating report for file: {file}')
-        final_report[file] = generate_dict_of_missing_values(file_path)
+        final_report[file] = generate_dict_of_missing_values(
+            file_path, include_unique_count)
     return final_report
 
 
@@ -149,3 +151,6 @@ def generate_csv_from_json(json_filename: str):
 
     return csv_text
 
+
+if __name__ == '__main__':
+    driver(include_unique_count=False)
