@@ -28,7 +28,7 @@ def driver():
 
     # Train a RandomForest model.
     rf = RandomForestClassifier(
-        labelCol="TARGET", featuresCol="features", numTrees=1)
+        labelCol="TARGET", featuresCol="features", numTrees=100, maxDepth=10)
 
     # Chain vector_assembler and forest in a Pipeline
     pipeline = Pipeline(stages=[vector_assembler, rf])
@@ -38,7 +38,7 @@ def driver():
 
     # Make predictions.
     predictions = model.transform(testData)
-    predictions.select('TARGET', 'rawPrediction').show(20)
+    predictions.select('TARGET', 'rawPrediction','prediction','probability').show(20)
 
     # Select (prediction, true label) and compute test error
     evaluator = BinaryClassificationEvaluator(rawPredictionCol="rawPrediction",
