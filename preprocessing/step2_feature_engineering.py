@@ -60,16 +60,39 @@ def funcname(self, parameter_list):
     pass
 
 def preprocess_features():
-    filename = f'{root}data/application_train.csv'
+    application_filename = f'{root}data/application_train.csv'
+    bureau_filename = f'{root}data/bureau.csv'
+
     spark = utils.init_spark()
-    data_df = spark.read.csv(filename, header=True)
+    data_df = spark.read.csv(application_filename, header=True)
+
+    
+    previous_loans_df = spark.read.csv(bureau_filename, header=True)
+    previous_loan_count = previous_loans_df.groupBy('SK_ID_CURR').count().na.fill(0,"count")
+    data_df = data_df.join(previous_loan_count, on="SK_ID_CURR")
+    data_df.select('SK_ID_CURR', 'count').show(10)
+
+    
 
     # List of Features
     features = [
         'FLAG_OWN_CAR',
         'CODE_GENDER',
-        'AMT_GOODS_PRICE', 'DAYS_EMPLOYED', 'DAYS_BIRTH', 'FLAG_DOCUMENT_2', 'FLAG_DOCUMENT_3', 'FLAG_DOCUMENT_4',
-        'AMT_CREDIT', 'FLAG_OWN_REALTY', 'FLAG_MOBIL', 'NAME_FAMILY_STATUS', 'NAME_TYPE_SUITE', 'NAME_EDUCATION_TYPE', 'NAME_CONTRACT_TYPE', 'NAME_INCOME_TYPE'
+        'AMT_GOODS_PRICE', 
+        'DAYS_EMPLOYED', 
+        'DAYS_BIRTH', 
+        'FLAG_DOCUMENT_2', 
+        'FLAG_DOCUMENT_3', 
+        'FLAG_DOCUMENT_4',
+        'AMT_CREDIT', 
+        'FLAG_OWN_REALTY',
+        'FLAG_MOBIL', 
+        'NAME_FAMILY_STATUS', 
+        'NAME_TYPE_SUITE', 
+        'NAME_EDUCATION_TYPE', 
+        'NAME_CONTRACT_TYPE', 
+        'NAME_INCOME_TYPE',
+        'count'
     ]
 
     # Feature Encoding
@@ -77,10 +100,8 @@ def preprocess_features():
     # Cast TARGET to int
     data_df = cast_column_to_type(data_df, 'TARGET', sparkTypes.IntegerType)
     data_df = cast_column_to_type(data_df, 'AMT_CREDIT', sparkTypes.FloatType)
-    data_df = cast_column_to_type(
-        data_df, 'AMT_GOODS_PRICE', sparkTypes.FloatType)
-    data_df = cast_column_to_type(
-        data_df, 'DAYS_EMPLOYED', sparkTypes.FloatType)
+    data_df = cast_column_to_type(data_df, 'AMT_GOODS_PRICE', sparkTypes.FloatType)
+    data_df = cast_column_to_type(data_df, 'DAYS_EMPLOYED', sparkTypes.FloatType)
     data_df = cast_column_to_type(data_df, 'DAYS_BIRTH', sparkTypes.FloatType)
 
     # Indexer
