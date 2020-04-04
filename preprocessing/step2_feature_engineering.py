@@ -81,6 +81,7 @@ def preprocess_features():
     bureau_filename = f'{root}data/bureau.csv'
 
     spark = utils.init_spark()
+    print(application_filename)
     data_df = spark.read.csv(application_filename, header=True)
 
     # Count of Applicant's Previous Loans

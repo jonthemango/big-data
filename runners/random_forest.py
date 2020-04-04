@@ -1,3 +1,5 @@
+import os
+print(os.environ['PYTHONPATH'])
 # Add this for dumb relative imports
 import sys
 sys.path.append(".")

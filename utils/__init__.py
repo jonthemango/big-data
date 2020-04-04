@@ -18,7 +18,7 @@ def dump(rdd, fn="out"):
 def init_spark():
     spark = SparkSession \
         .builder \
-        .appName("Python Spark SQL basic example") \
+        .appName("Home Credit Loan Job") \
         .config("spark.some.config.option", "some-value") \
         .getOrCreate()
     return spark
@@ -33,5 +33,10 @@ def get_project_root_dir() -> str:
             exit(1)
         else:
             os.chdir('..')
-
-    return f'file://{os.getcwd()}/'
+    if sys.platform == "linux":
+        return f'file://{os.getcwd()}/'
+    elif sys.platform == "win32":
+        return f'{os.getcwd()}/'
+    else:
+        raise OSError("Not implemented for Mac OS")
+        return f'file://{os.getcwd()}/' # change for mac
