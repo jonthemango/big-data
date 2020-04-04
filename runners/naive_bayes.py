@@ -1,3 +1,7 @@
+# Add this for dumb relative imports
+import sys
+sys.path.append(".")
+
 from preprocessing import step2_feature_engineering as feature_eng
 
 from pyspark.rdd import RDD
@@ -18,12 +22,7 @@ def driver():
     data_df.cache()
     # Split the data into training and test sets (30% held out for testing)
     (trainingData, testData) = data_df.randomSplit([0.7, 0.3])
-'''
-OCUPATION_TYPE: 1 | 5 | 9
-1, 1,0
-5, 1,0
-9, 1,0
-'''
+
     # create the trainer and set its parameters
     nb = NaiveBayes(labelCol='TARGET', featuresCol='OCCUPATION_TYPE',
                     smoothing=1.0, modelType="multinomial")
@@ -45,4 +44,5 @@ OCUPATION_TYPE: 1 | 5 | 9
     print(f"Area Under ROC = {areaUnderRoc}")
 
 
-driver()
+if __name__ == '__main__':
+    driver()

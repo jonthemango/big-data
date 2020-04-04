@@ -1,3 +1,7 @@
+# Add this for dumb relative imports
+import sys
+sys.path.append(".")
+
 from preprocessing import step2_feature_engineering as feature_eng
 
 from pyspark.rdd import RDD
@@ -48,4 +52,5 @@ def driver():
     print(f"Area Under ROC = {areaUnderRoc}")
 
 
-driver()
+if __name__ == '__main__':
+    driver()

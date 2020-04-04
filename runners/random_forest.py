@@ -1,3 +1,8 @@
+# Add this for dumb relative imports
+import sys
+sys.path.append(".")
+
+import utils
 from preprocessing import step2_feature_engineering as feature_eng
 
 from pyspark.rdd import RDD
@@ -5,7 +10,6 @@ from pyspark.sql import DataFrame
 from pyspark.sql import SparkSession
 import json
 import copy as cp
-import utils
 
 from pyspark.ml import Pipeline
 from pyspark.ml.classification import RandomForestClassifier
@@ -47,5 +51,5 @@ def driver():
     areaUnderRoc = evaluator.evaluate(predictions)
     print(f"Area Under ROC = {areaUnderRoc}")
 
-
-driver()
+if __name__ == '__main__':
+    driver()

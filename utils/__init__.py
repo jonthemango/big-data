@@ -1,3 +1,7 @@
+# Add this for dumb relative imports
+import sys
+sys.path.append(".")
+
 from pyspark.rdd import RDD
 from pyspark.sql import DataFrame
 from pyspark.sql import SparkSession
