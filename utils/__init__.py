@@ -34,4 +34,4 @@ def get_project_root_dir() -> str:
         else:
             os.chdir('..')
 
-    return os.getcwd()+'/'
+    return f'file://{os.getcwd()}/'
