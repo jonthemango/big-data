@@ -14,6 +14,7 @@ def dump(rdd, fn="out"):
 def init_spark():
     spark = SparkSession \
         .builder \
+        .master("local[2]")\
         .appName("Python Spark SQL basic example") \
         .config("spark.some.config.option", "some-value") \
         .getOrCreate()

@@ -17,6 +17,7 @@ def driver():
 
     # Pre-process features
     data_df, features = feature_eng.preprocess_features()
+    data_df.cache()
 
     # Split the data into training and test sets (30% held out for testing)
     (trainingData, testData) = data_df.randomSplit([0.7, 0.3])

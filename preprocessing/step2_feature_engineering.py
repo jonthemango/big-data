@@ -68,23 +68,55 @@ def encode_using_stats(df, column_names, sql_type=sparkTypes.FloatType):
         aggregations.append(F.min(column_name))
         aggregations.append(F.max(column_name))
 
-    agg_df = df.groupBy("SK_ID_CURR").agg(*aggregations) #.agg(aggregations)
+    agg_df = df.groupBy("SK_ID_CURR").agg(*aggregations)  # .agg(aggregations)
     return agg_df, agg_df.columns
 
 
+def get_previous_loan_status(bureau_df):
+    previous_loan_count_df = (bureau_df
+                              .groupBy('SK_ID_CURR')
+                              .count().na.fill(0)
+                              .withColumnRenamed('count', 'previous_loans_count')
+                              )
+
+    late_df = (bureau_df
+               .where(bureau_df['CREDIT_DAY_OVERDUE'] > 0)
+               .groupBy('SK_ID_CURR')
+               .count()
+               .withColumnRenamed('count', 'late_loans')
+               )
+
+    ontime_df = (bureau_df
+                 .where(bureau_df['CREDIT_DAY_OVERDUE'] <= 0)
+                 .groupBy('SK_ID_CURR')
+                 .count()
+                 .withColumnRenamed('count', 'ontime_loans')
+                 )
+
+    joined = previous_loan_count_df.join(late_df, on=['SK_ID_CURR'], how='outer').na.fill(0)
+    joined = joined.join(ontime_df, on=['SK_ID_CURR'], how='outer').na.fill(0)
+    joined = joined.withColumn('late_loan_ratio', joined['late_loans'] / joined['previous_loans_count'])
+    return joined
+
+
 def preprocess_features():
+    print("\n\n\n***Start Pre-Process")
     application_filename = f'{root}data/application_train.csv'
     bureau_filename = f'{root}data/bureau.csv'
 
+    # Read CSV file
     spark = utils.init_spark()
     data_df = spark.read.csv(application_filename, header=True)
+    previous_loans_df = spark.read.csv(bureau_filename, header=True) # X columns
 
-    # Count of Applicant's Previous Loans
-    previous_loans_df = spark.read.csv(bureau_filename, header=True)
-    previous_loan_count = previous_loans_df.groupBy('SK_ID_CURR').count().na.fill(0, "count")  # [SK_ID_CURR, count]
-    data_df = data_df.join(previous_loan_count,on="SK_ID_CURR")  # join on SK_ID_CURR
+    # Sample Data
+    data_df = data_df.sample(0.001)
 
-    # Numerical Data
+    # Count of Applicant's Previous Loans (ontime vs late)
+    payment_status_df = get_previous_loan_status(previous_loans_df)
+    data_df = data_df.join(payment_status_df, on="SK_ID_CURR", how="inner")
+
+    # Numerical Data (feature list: [])
     agg_df, _ = encode_using_stats(previous_loans_df, ['DAYS_CREDIT', 'CREDIT_DAY_OVERDUE'])
     data_df = data_df.join(agg_df, on="SK_ID_CURR")
     agg_df.show(10)
@@ -102,16 +134,15 @@ def preprocess_features():
         'AMT_CREDIT',
         'FLAG_OWN_REALTY',
         'FLAG_MOBIL',
-        'NAME_FAMILY_STATUS',
-        'NAME_TYPE_SUITE',
-        'NAME_EDUCATION_TYPE',
+        # 'NAME_TYPE_SUITE',
+        # 'NAME_EDUCATION_TYPE',
         'NAME_CONTRACT_TYPE',
         'NAME_INCOME_TYPE',
-        'count',
         'avg(CREDIT_DAY_OVERDUE)',
         'min(DAYS_CREDIT)',
         'max(DAYS_CREDIT)',
-        'avg(DAYS_CREDIT)'
+        'avg(DAYS_CREDIT)',
+        'late_loan_ratio'
     ]
 
     # Feature Encoding
@@ -126,7 +157,7 @@ def preprocess_features():
     data_df = cast_column_to_type(data_df, 'min(DAYS_CREDIT)', sparkTypes.FloatType)
     data_df = cast_column_to_type(data_df, 'max(DAYS_CREDIT)', sparkTypes.FloatType)
     data_df = cast_column_to_type(data_df, 'avg(DAYS_CREDIT)', sparkTypes.FloatType)
-
+    data_df = cast_column_to_type(data_df, 'late_loan_ratio', sparkTypes.FloatType)
     # Indexer
     data_df = encode_using_indexer(data_df, 'FLAG_OWN_CAR')
     data_df = encode_using_indexer(data_df, 'CODE_GENDER')
@@ -137,14 +168,11 @@ def preprocess_features():
     data_df = encode_using_indexer(data_df, 'FLAG_DOCUMENT_3')
     data_df = encode_using_indexer(data_df, 'FLAG_DOCUMENT_4')
 
-    # One-Hot Encoding
-    data_df = encode_using_one_hot(data_df, 'NAME_EDUCATION_TYPE')
-    data_df = encode_using_one_hot(data_df, 'NAME_FAMILY_STATUS')
-    data_df = encode_using_one_hot(data_df, 'NAME_TYPE_SUITE')
+    # One-Hot EncodingtrainingData,
     data_df = encode_using_one_hot(data_df, 'NAME_INCOME_TYPE')
     data_df = encode_using_one_hot(data_df, 'OCCUPATION_TYPE')
 
-    return data_df, features
+    return data_df.select(['TARGET']+features), features
 
 
 if __name__ == "__main__":
