@@ -75,19 +75,49 @@ def encode_using_stats(df, column_names, sql_type=sparkTypes.FloatType):
     agg_df = df.groupBy("SK_ID_CURR").agg(*aggregations) #.agg(aggregations)
     return agg_df, agg_df.columns
 
+def get_previous_loan_status(bureau_df):
+    previous_loan_count_df = (bureau_df
+                              .groupBy('SK_ID_CURR')
+                              .count().na.fill(0)
+                              .withColumnRenamed('count', 'previous_loans_count')
+                              )
 
-def preprocess_features():
+    late_df = (bureau_df
+               .where(bureau_df['CREDIT_DAY_OVERDUE'] > 0)
+               .groupBy('SK_ID_CURR')
+               .count()
+               .withColumnRenamed('count', 'late_loans')
+               )
+
+    ontime_df = (bureau_df
+                 .where(bureau_df['CREDIT_DAY_OVERDUE'] <= 0)
+                 .groupBy('SK_ID_CURR')
+                 .count()
+                 .withColumnRenamed('count', 'ontime_loans')
+                 )
+
+    joined = previous_loan_count_df.join(late_df, on=['SK_ID_CURR'], how='outer').na.fill(0)
+    joined = joined.join(ontime_df, on=['SK_ID_CURR'], how='outer').na.fill(0)
+    joined = joined.withColumn('late_loan_ratio', joined['late_loans'] / joined['previous_loans_count'])
+    return joined
+
+
+def preprocess_features(takeSample=False):
     application_filename = f'{root}data/application_train.csv'
     bureau_filename = f'{root}data/bureau.csv'
 
+    # Read CSV file
     spark = utils.init_spark()
-    print(application_filename)
     data_df = spark.read.csv(application_filename, header=True)
+    previous_loans_df = spark.read.csv(bureau_filename, header=True) # X columns
 
-    # Count of Applicant's Previous Loans
-    previous_loans_df = spark.read.csv(bureau_filename, header=True)
-    previous_loan_count = previous_loans_df.groupBy('SK_ID_CURR').count().na.fill(0, "count")  # [SK_ID_CURR, count]
-    data_df = data_df.join(previous_loan_count,on="SK_ID_CURR")  # join on SK_ID_CURR
+    # Sample Data
+    if takeSample:
+        data_df = data_df.sample(0.001)
+
+    # Count of Applicant's Previous Loans (ontime vs late)
+    payment_status_df = get_previous_loan_status(previous_loans_df)
+    data_df = data_df.join(payment_status_df, on="SK_ID_CURR", how="inner")
 
     # Numerical Data
     agg_df, _ = encode_using_stats(previous_loans_df, ['DAYS_CREDIT', 'CREDIT_DAY_OVERDUE'])
@@ -112,7 +142,6 @@ def preprocess_features():
         'NAME_EDUCATION_TYPE',
         'NAME_CONTRACT_TYPE',
         'NAME_INCOME_TYPE',
-        'count',
         'avg(CREDIT_DAY_OVERDUE)',
         'min(DAYS_CREDIT)',
         'max(DAYS_CREDIT)',
