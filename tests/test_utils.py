@@ -1,4 +1,4 @@
-from utils import dump, init_spark
+from src.utils import dump, init_spark
 import os
 
 def test_dump():

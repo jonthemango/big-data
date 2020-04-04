@@ -8,7 +8,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
 import json
 import copy as cp
-import utils
+from src import utils
 
 from pyspark.ml import Pipeline
 from pyspark.ml.classification import RandomForestClassifier

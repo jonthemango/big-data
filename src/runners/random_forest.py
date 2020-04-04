@@ -2,17 +2,19 @@
 import sys
 sys.path.append(".")
 
-from preprocessing import step2_feature_engineering as feature_eng
+
+import importlib
+from src import utils
+from src.preprocessing import step2_feature_engineering as feature_eng
 
 from pyspark.rdd import RDD
 from pyspark.sql import DataFrame
 from pyspark.sql import SparkSession
 import json
 import copy as cp
-import utils
 
 from pyspark.ml import Pipeline
-from pyspark.ml.classification import DecisionTreeClassifier
+from pyspark.ml.classification import RandomForestClassifier
 from pyspark.ml.feature import VectorAssembler
 from pyspark.ml.evaluation import BinaryClassificationEvaluator
 
@@ -31,8 +33,8 @@ def driver():
         inputCols=features, outputCol="features")
 
     # Train a RandomForest model.
-    rf = DecisionTreeClassifier(
-        labelCol="TARGET", featuresCol="features")
+    rf = RandomForestClassifier(
+        labelCol="TARGET", featuresCol="features", numTrees=100, maxDepth=10)
 
     # Chain vector_assembler and forest in a Pipeline
     pipeline = Pipeline(stages=[vector_assembler, rf])
@@ -42,7 +44,7 @@ def driver():
 
     # Make predictions.
     predictions = model.transform(testData)
-    predictions.select('TARGET', 'rawPrediction').show(20)
+    predictions.select('TARGET', 'rawPrediction','prediction','probability').show(20)
 
     # Select (prediction, true label) and compute test error
     evaluator = BinaryClassificationEvaluator(rawPredictionCol="rawPrediction",
@@ -50,7 +52,6 @@ def driver():
 
     areaUnderRoc = evaluator.evaluate(predictions)
     print(f"Area Under ROC = {areaUnderRoc}")
-
 
 if __name__ == '__main__':
     driver()

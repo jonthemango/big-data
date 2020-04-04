@@ -2,19 +2,19 @@
 import sys
 sys.path.append(".")
 
-from preprocessing import step2_feature_engineering as feature_eng
+from src.preprocessing import step2_feature_engineering as feature_eng
 
 from pyspark.rdd import RDD
 from pyspark.sql import DataFrame
 from pyspark.sql import SparkSession
 import json
 import copy as cp
-import utils
+from src import utils
 
 from pyspark.ml import Pipeline
-from pyspark.ml.classification import NaiveBayes
 from pyspark.ml.feature import VectorAssembler
 from pyspark.ml.evaluation import BinaryClassificationEvaluator
+from pyspark.ml.classification import LinearSVC
 
 
 def driver():
@@ -23,20 +23,22 @@ def driver():
     # Split the data into training and test sets (30% held out for testing)
     (trainingData, testData) = data_df.randomSplit([0.7, 0.3])
 
-    # create the trainer and set its parameters
-    nb = NaiveBayes(labelCol='TARGET', featuresCol='OCCUPATION_TYPE',
-                    smoothing=1.0, modelType="multinomial")
+    # Assemble all features in a vector using Vector Assembler
+    # map it to new column named features
+    vector_assembler = VectorAssembler(
+        inputCols=features, outputCol="features")
 
-    # Chain vector_assembler and forest in a Pipeline
+    lsvc = LinearSVC(labelCol='TARGET', maxIter=10, regParam=0.1)
 
-    # Train model.  This also runs the indexers.
-    model = nb.fit(trainingData)
+    # Chain vector_assembler and lsvc in a Pipeline
+    pipeline = Pipeline(stages=[vector_assembler, lsvc])
 
-    # Make predictions.
-    predictions = model.transform(testData)
-    predictions.select('TARGET', 'rawPrediction', 'prediction','probability').show(20)
+    # Fit the model
+    lsvcModel = pipeline.fit(trainingData)
 
-    # Select (prediction, true label) and compute test error
+    predictions = lsvcModel.transform(testData)
+    predictions.select('TARGET', 'rawPrediction', 'prediction').show(150)
+
     evaluator = BinaryClassificationEvaluator(rawPredictionCol="rawPrediction",
                                               labelCol="TARGET", metricName='areaUnderROC')
 
