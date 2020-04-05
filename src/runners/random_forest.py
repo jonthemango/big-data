@@ -16,7 +16,7 @@ import copy as cp
 from pyspark.ml import Pipeline
 from pyspark.ml.classification import RandomForestClassifier
 from pyspark.ml.feature import VectorAssembler
-from pyspark.ml.evaluation import BinaryClassificationEvaluator
+from pyspark.ml.evaluation import BinaryClassificationEvaluator,MulticlassClassificationEvaluator
 
 
 def driver(takeSample=False):
@@ -47,11 +47,12 @@ def driver(takeSample=False):
     predictions.select('TARGET', 'rawPrediction','prediction','probability').show(20)
 
     # Select (prediction, true label) and compute test error
-    evaluator = BinaryClassificationEvaluator(rawPredictionCol="rawPrediction",
-                                              labelCol="TARGET", metricName='areaUnderROC')
-
+    evaluator = BinaryClassificationEvaluator(rawPredictionCol="rawPrediction", labelCol="TARGET", metricName='areaUnderROC')
+    multi_class_evaluator = MulticlassClassificationEvaluator(predictionCol="prediction", labelCol="TARGET", metricName="f1")
     areaUnderRoc = evaluator.evaluate(predictions)
+    f1 = multi_class_evaluator.evaluate(predictions)
     print(f"Area Under ROC = {areaUnderRoc}")
+    print(f"F1 = {f1}")
 
 if __name__ == '__main__':
     driver()

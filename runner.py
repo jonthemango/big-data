@@ -5,6 +5,13 @@ from src.runners import naive_bayes
 from src.runners import knn
 import sys
 
+drivers = [
+    random_forest.driver,
+    decision_tree.driver,
+    linear_support_vector_machine.driver,
+    naive_bayes.driver,
+    knn.driver
+]
 
 if __name__ == '__main__':
     try:
@@ -17,14 +24,14 @@ if __name__ == '__main__':
     except Exception as e:
         takeSample = False
 
+    print(f"Runner = {runner}", f"Take Sample = {takeSample}")
     if runner == 'all':
-            random_forest.driver(takeSample)
-            decision_tree.driver(takeSample)
-            linear_support_vector_machine.driver(takeSample)
-            naive_bayes.driver(takeSample)
-            knn.driver(takeSample)
-
-    print(runner, takeSample)
-    driver = getattr(globals()[runner], 'driver')
-    driver(takeSample=takeSample)
+        for driver in drivers:
+            try:
+                driver(takeSample)
+            except:
+                print(f"{driver} failed to execute.")
+    else:
+        driver = getattr(globals()[runner], 'driver')
+        driver(takeSample=takeSample)
 

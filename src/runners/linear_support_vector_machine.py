@@ -13,7 +13,7 @@ from src import utils
 
 from pyspark.ml import Pipeline
 from pyspark.ml.feature import VectorAssembler
-from pyspark.ml.evaluation import BinaryClassificationEvaluator
+from pyspark.ml.evaluation import BinaryClassificationEvaluator,MulticlassClassificationEvaluator
 from pyspark.ml.classification import LinearSVC
 
 
@@ -39,11 +39,12 @@ def driver(takeSample=False):
     predictions = lsvcModel.transform(testData)
     predictions.select('TARGET', 'rawPrediction', 'prediction').show(150)
 
-    evaluator = BinaryClassificationEvaluator(rawPredictionCol="rawPrediction",
-                                              labelCol="TARGET", metricName='areaUnderROC')
-
+    evaluator = BinaryClassificationEvaluator(rawPredictionCol="rawPrediction", labelCol="TARGET", metricName='areaUnderROC')
+    multi_class_evaluator = MulticlassClassificationEvaluator(predictionCol="prediction", labelCol="TARGET", metricName="f1")
     areaUnderRoc = evaluator.evaluate(predictions)
+    f1 = multi_class_evaluator.evaluate(predictions)
     print(f"Area Under ROC = {areaUnderRoc}")
+    print(f"F1 = {f1}")
 
 
 if __name__ == '__main__':

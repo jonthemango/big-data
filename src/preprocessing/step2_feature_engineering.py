@@ -137,7 +137,6 @@ def preprocess_features(takeSample=False):
         'AMT_CREDIT',
         'FLAG_OWN_REALTY',
         'FLAG_MOBIL',
-        'NAME_FAMILY_STATUS',
         'NAME_TYPE_SUITE',
         'NAME_EDUCATION_TYPE',
         'NAME_CONTRACT_TYPE',
@@ -145,7 +144,10 @@ def preprocess_features(takeSample=False):
         'avg(CREDIT_DAY_OVERDUE)',
         'min(DAYS_CREDIT)',
         'max(DAYS_CREDIT)',
-        'avg(DAYS_CREDIT)'
+        'avg(DAYS_CREDIT)',
+        'late_loan_ratio',
+        'OCCUPATION_TYPE',
+        'NAME_FAMILY_STATUS'
     ]
 
     # Feature Encoding
