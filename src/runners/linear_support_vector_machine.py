@@ -3,6 +3,7 @@ import sys
 sys.path.append(".")
 
 from src.preprocessing import step2_feature_engineering as feature_eng
+from src.evaluators import multiple_evaluator
 
 from pyspark.rdd import RDD
 from pyspark.sql import DataFrame
@@ -39,13 +40,7 @@ def driver(takeSample=False):
     predictions = lsvcModel.transform(testData)
     predictions.select('TARGET', 'rawPrediction', 'prediction').show(150)
 
-    evaluator = BinaryClassificationEvaluator(rawPredictionCol="rawPrediction", labelCol="TARGET", metricName='areaUnderROC')
-    multi_class_evaluator = MulticlassClassificationEvaluator(predictionCol="prediction", labelCol="TARGET", metricName="f1")
-    areaUnderRoc = evaluator.evaluate(predictions)
-    f1 = multi_class_evaluator.evaluate(predictions)
-    print(f"Area Under ROC = {areaUnderRoc}")
-    print(f"F1 = {f1}")
-
+    return multiple_evaluator(predictions)
 
 if __name__ == '__main__':
     driver()

@@ -25,13 +25,15 @@ if __name__ == '__main__':
         takeSample = False
 
     print(f"Runner = {runner}", f"Take Sample = {takeSample}")
+    report = {}
     if runner == 'all':
         for driver in drivers:
             try:
-                driver(takeSample)
+                report[driver] = driver(takeSample)
             except:
                 print(f"{driver} failed to execute.")
     else:
         driver = getattr(globals()[runner], 'driver')
-        driver(takeSample=takeSample)
+        report[driver] = driver(takeSample=takeSample)
+    print(report)
 

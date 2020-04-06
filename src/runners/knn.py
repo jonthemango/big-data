@@ -24,6 +24,7 @@ from numpy.linalg import norm
 from numpy.lib.scimath import sqrt
 
 def driver(takeSample=False):
+    return {}
     print("***\n\n\nStarting KNN")
     # Pre-process features
     data_df, features = feature_eng.preprocess_features(takeSample=takeSample)

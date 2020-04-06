@@ -194,5 +194,9 @@ def preprocess_features(takeSample=False):
 
 if __name__ == "__main__":
     data_df, features = preprocess_features()
-    data_df.show(10)
+    #data_df.show(100)
+    def toCSVLine(data):
+        return ','.join(str(d) for d in data)
+
+    lines = data_df.rdd.map(toCSVLine)
     print(features)
