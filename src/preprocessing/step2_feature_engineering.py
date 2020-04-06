@@ -115,6 +115,9 @@ def preprocess_features(takeSample=False):
     if takeSample:
         data_df = data_df.sample(0.001)
 
+    data_df.cache()
+    previous_loans_df.cache()
+
     # Count of Applicant's Previous Loans (ontime vs late)
     payment_status_df = get_previous_loan_status(previous_loans_df)
     data_df = data_df.join(payment_status_df, on="SK_ID_CURR", how="inner")
