@@ -45,8 +45,21 @@ def driver(takeSample=False):
 
     # Make predictions.
     predictions = model.transform(testData)
-    predictions.select('TARGET', 'rawPrediction','prediction','probability').show(20)
+    pred = predictions.select('TARGET', 'rawPrediction','prediction','probability')
 
+    def identify(row):
+        target = int(row['TARGET'])
+        prediction = int(row['prediction'])
+
+        dic = [
+            ["TN", "FP"],
+            ["FN", "TP"]
+        ]
+
+        return (dic[target][prediction], 1)
+
+    print(pred.rdd.map(identify).reduceByKey(lambda x,y : x+y).collect())
+    return {}
     return multiple_evaluator(predictions)
 
 

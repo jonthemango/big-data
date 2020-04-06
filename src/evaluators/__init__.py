@@ -24,6 +24,9 @@ def multiple_evaluator(prediction_df):
         metric = evaluator.evaluate(prediction_df)
         print(f"{metric_name} = {metric}")
         retval[metric_name] = metric
+
+
+    print("Our F1 = ", 2*(retval['weightedPrecision']*retval['weightedRecall'])/(retval['weightedPrecision']+retval['weightedRecall']))
     print(retval)
     return retval
 
