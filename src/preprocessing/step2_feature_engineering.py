@@ -114,6 +114,12 @@ def preprocess_features(takeSample=False):
     # Sample Data
     if takeSample:
         data_df = data_df.sample(0.001)
+        sample_ids = data_df.select('SK_ID_CURR')
+
+        #remove rows from bureau that dont refer to sample_ids
+        previous_loans_df = previous_loans_df.join(sample_ids,on='SK_ID_CURR',how='inner')
+
+    print(f"\n\n*---previous loans size = {previous_loans_df.count()}\n\n")
 
     data_df.cache()
     previous_loans_df.cache()
