@@ -7,6 +7,7 @@ import importlib
 from src import utils
 from src.preprocessing import step2_feature_engineering as feature_eng
 from src.evaluators import multiple_evaluator
+from src.preprocessing import step3_undersampling as sampling
 
 from pyspark.rdd import RDD
 from pyspark.sql import DataFrame
@@ -26,7 +27,9 @@ def driver(takeSample=False):
     data_df, features = feature_eng.preprocess_features(takeSample=takeSample)
 
     # Split the data into training and test sets (30% held out for testing)
-    (trainingData, testData) = data_df.randomSplit([0.7, 0.3])
+    (trainingData, testData) = data_df.randomSplit([0.8, 0.2])
+    trainingData = sampling.undersample(trainingData,class_ratio=0.5)
+
 
     # Assemble all features in a vector using Vector Assembler
     # map it to new column named features

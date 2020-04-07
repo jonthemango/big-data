@@ -1,7 +1,6 @@
 from pyspark.ml.evaluation import BinaryClassificationEvaluator, MulticlassClassificationEvaluator
 from collections import defaultdict
 
-
 def multiple_evaluator(prediction_df):
     '''
     Evaluate all possible m
@@ -34,8 +33,7 @@ def multiple_evaluator(prediction_df):
         metric = evaluator.evaluate(prediction_df)
         m[metric_name] = metric
 
-    print(m)
-    return m
+    return dict(m)
 
 
 def calculate_TP_TN_FP_FN(prediction_df) -> dict:
@@ -54,13 +52,11 @@ def calculate_TP_TN_FP_FN(prediction_df) -> dict:
         '''
         return (dic[target][prediction], 1)
 
-    tuple_count = prediction_df.rdd.map(
-        identify).reduceByKey(lambda x, y: x+y).collect()
+    tuple_count = prediction_df.rdd.map(identify).reduceByKey(lambda x, y: x+y).collect()
     # tuple_count = [('FN', 4), ('TN', 47)]  for examle
 
     result = defaultdict(int)
     for item in tuple_count:
         result[item[0]] = item[1]
-    print(result)
 
     return result
