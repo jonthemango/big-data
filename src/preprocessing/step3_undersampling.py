@@ -65,8 +65,7 @@ if __name__ == '__main__':
     ratio = round(new_maj/(new_maj+new_minority)*100, 4)
 
     print(f'\nminority count after sampling = {new_minority}')
-    print(
-        f'minority count before sample = {df.where(df["TARGET"]==1).count()}  == {new_minority}')
+    print(f'minority count before sample = {df.where(df["TARGET"]==1).count()}  == {new_minority}')
 
     print(f'old majority count {maj}')
     print(f'new majority count {new_maj}')
