@@ -1,7 +1,7 @@
 gcloud compute ssh --project=bigdata-273121  cluster-c964-m
 
-gcloud compute scp --project="bigdata-273121" --zone="us-central1-a" --recurse "./src" "./runner.py" "./requirements.txt" cluster-c964-m:/home/jonat/big-data
+gcloud compute scp --project="bigdata-273121" --zone="us-central1-a" --recurse "./src" "./runner.py" "./requirements.txt" cluster-c964-m:~/big-data
 
-gcloud compute scp --project="bigdata-273121" --zone="us-central1-a" --recurse "./data" cluster-c964-m:/home/jonat/big-data
+gcloud compute scp --project="bigdata-273121" --zone="us-central1-a" --recurse "./data" cluster-c964-m:~/big-data
 
 gcloud dataproc jobs submit pyspark "./runners/random_forest.py" --async --cluster="cluster-c964"  --region="us-central1"
