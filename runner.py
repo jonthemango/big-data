@@ -6,11 +6,11 @@ from src.runners import knn
 import sys
 
 drivers = [
-    random_forest.driver,
-    decision_tree.driver,
-    linear_support_vector_machine.driver,
-    naive_bayes.driver,
-    knn.driver
+    random_forest,
+    decision_tree,
+    linear_support_vector_machine,
+    naive_bayes,
+    knn
 ]
 
 if __name__ == '__main__':
@@ -25,13 +25,15 @@ if __name__ == '__main__':
         takeSample = False
 
     print(f"Runner = {runner}", f"Take Sample = {takeSample}")
+    report = {}
     if runner == 'all':
         for driver in drivers:
             try:
-                driver(takeSample)
+                report[driver.__name__] = driver.driver(takeSample)
             except:
-                print(f"{driver} failed to execute.")
+                print(f"{driver.__name__} failed to execute.")
     else:
         driver = getattr(globals()[runner], 'driver')
-        driver(takeSample=takeSample)
+        report[runner] = driver(takeSample=takeSample)
+    print(report)
 

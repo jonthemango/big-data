@@ -3,6 +3,7 @@ import sys
 sys.path.append(".")
 
 from src.preprocessing import step2_feature_engineering as feature_eng
+from src.evaluators import multiple_evaluator
 
 from pyspark.rdd import RDD
 from pyspark.sql import DataFrame
@@ -27,7 +28,6 @@ def driver(takeSample=False):
     nb = NaiveBayes(labelCol='TARGET', featuresCol='OCCUPATION_TYPE',
                     smoothing=1.0, modelType="multinomial")
 
-    # Chain vector_assembler and forest in a Pipeline
 
     # Train model.  This also runs the indexers.
     model = nb.fit(trainingData)
@@ -36,13 +36,7 @@ def driver(takeSample=False):
     predictions = model.transform(testData)
     predictions.select('TARGET', 'rawPrediction', 'prediction','probability').show(20)
 
-    # Select (prediction, true label) and compute test error
-    evaluator = BinaryClassificationEvaluator(rawPredictionCol="rawPrediction", labelCol="TARGET", metricName='areaUnderROC')
-    multi_class_evaluator = MulticlassClassificationEvaluator(predictionCol="prediction", labelCol="TARGET", metricName="f1")
-    areaUnderRoc = evaluator.evaluate(predictions)
-    f1 = multi_class_evaluator.evaluate(predictions)
-    print(f"Area Under ROC = {areaUnderRoc}")
-    print(f"F1 = {f1}")
+    return multiple_evaluator(predictions)
 
 
 if __name__ == '__main__':

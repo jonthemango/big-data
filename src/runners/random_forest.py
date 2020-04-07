@@ -6,6 +6,7 @@ sys.path.append(".")
 import importlib
 from src import utils
 from src.preprocessing import step2_feature_engineering as feature_eng
+from src.evaluators import multiple_evaluator
 
 from pyspark.rdd import RDD
 from pyspark.sql import DataFrame
@@ -44,15 +45,25 @@ def driver(takeSample=False):
 
     # Make predictions.
     predictions = model.transform(testData)
-    predictions.select('TARGET', 'rawPrediction','prediction','probability').show(20)
+    pred = predictions.select('TARGET', 'rawPrediction','prediction','probability')
 
-    # Select (prediction, true label) and compute test error
-    evaluator = BinaryClassificationEvaluator(rawPredictionCol="rawPrediction", labelCol="TARGET", metricName='areaUnderROC')
-    multi_class_evaluator = MulticlassClassificationEvaluator(predictionCol="prediction", labelCol="TARGET", metricName="f1")
-    areaUnderRoc = evaluator.evaluate(predictions)
-    f1 = multi_class_evaluator.evaluate(predictions)
-    print(f"Area Under ROC = {areaUnderRoc}")
-    print(f"F1 = {f1}")
+    def identify(row):
+        target = int(row['TARGET'])
+        prediction = int(row['prediction'])
+
+        dic = [
+            ["TN", "FP"],
+            ["FN", "TP"]
+        ]
+
+        return (dic[target][prediction], 1)
+
+    print(pred.rdd.map(identify).reduceByKey(lambda x,y : x+y).collect())
+    return {}
+    return multiple_evaluator(predictions)
+
+
+
 
 if __name__ == '__main__':
     driver()
