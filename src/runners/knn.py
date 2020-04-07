@@ -6,6 +6,7 @@ sys.path.append(".")
 import importlib
 from src import utils
 from src.preprocessing import step2_feature_engineering as feature_eng
+from src.evaluators import multiple_evaluator
 
 from pyspark.rdd import RDD
 from pyspark.sql import DataFrame, SparkSession, Row
@@ -24,7 +25,6 @@ from numpy.linalg import norm
 from numpy.lib.scimath import sqrt
 
 def driver(takeSample=False):
-    return {}
     print("***\n\n\nStarting KNN")
     # Pre-process features
     data_df, features = feature_eng.preprocess_features(takeSample=takeSample)
@@ -41,39 +41,78 @@ def driver(takeSample=False):
     print("***\n\n\nData Split KNN")
     train_vector = trainingData.select("SK_ID_CURR","features", "TARGET").withColumnRenamed("SK_ID_CURR","train_SK_ID_CURR").withColumnRenamed("features","train_features")
     test_vector = testData.select("SK_ID_CURR","features").withColumnRenamed("SK_ID_CURR","test_SK_ID_CURR").withColumnRenamed("features","test_features")
-    train_vector.show(10)
-    test_vector.show(10)
-    print("***\n\n\nVectors Renamed")
+    '''
+    spark = utils.init_spark()
+    data = [
+        ("1", (3,(0,0,0)), 0),
+        ("2", (3,(0,9,5)), 1),
+        ("3", (3,(8,7,10)), 1),
+        ("4", (3,(1,0,9)), 0),
+        ("5", (3,(9,2,1)), 1),
+        ("6", (3,(9,2,1)), 0),
+        ("7", (3,(9,2,1)), 0),
+        ("8", (3,(9,81,1)), 1),
+        ("9", (3,(9,88,1)), 0),
+        ("10", (3,(9,99,1)), 1)
+    ]
+
+    data_df = spark.sparkContext.parallelize(data)
+    (trainingData, testData) = data_df.toDF().randomSplit([0.7, 0.3])
+    test_vector = testData.withColumnRenamed('_1','test_SK_ID_CURR').withColumnRenamed('_2', 'test_features').withColumnRenamed('_3', 'test_target')
+    train_vector = trainingData.withColumnRenamed('_1','train_SK_ID_CURR').withColumnRenamed('_2','train_features').withColumnRenamed('_3','TARGET')
+    '''
     cross_join = test_vector.crossJoin(train_vector)
     cross_join.show(20)
-    print("***\n\n\nCross Joined")
 
     def distance(row):
-        print(row)
         train_features = row['train_features']
         test_features = row['test_features']
         train_SK_ID_CURR = row['train_SK_ID_CURR']
         test_SK_ID_CURR = row['test_SK_ID_CURR']
         target = row['TARGET']
+
+        # euclid distance
+        s = 0
+        for i in range(len(train_features)):
+            s += (train_features[i]-test_features[i])**2
+        distance = float(sqrt(s))
+
         row = Row(
             train_features=train_features,
             test_features=test_features,
             train_SK_ID_CURR=train_SK_ID_CURR,
             test_SK_ID_CURR=test_SK_ID_CURR,
             TARGET=target,
-            distance=float(norm(train_features[1]-test_features[1]))
+            distance=distance
         )
         return row
 
-    print("***\n\n\nDistance Function Defined")
-    spark = utils.init_spark()
+
     cross_join = cross_join.rdd.map(distance).toDF()
     print(cross_join.take(10))
     cross_join.show()
-    cross_join = cross_join.groupBy('test_SK_ID_CURR').agg(count("TARGET"), sum("TARGET"))
-    cross_join.show()
-    cross_join = cross_join.withColumn('prediction', cross_join["sum(TARGET)"] / cross_join["count(TARGET)"])
-    cross_join.show()
+    grouped = cross_join.rdd.map(lambda x: (x.test_SK_ID_CURR, x)).groupByKey()
+
+    def sorter(row):
+        k = 5
+        print(row)
+        import heapq
+        closest_k = heapq.nsmallest(k, row[1], key=lambda ele: ele.distance)
+        distances = []
+        target_sum = 0
+        for ele in closest_k:
+            distances.append((ele.train_SK_ID_CURR, ele.TARGET, ele.distance))
+            target_sum += ele.TARGET
+        if target_sum/k < 0.5:
+            prediction = 0
+        else:
+            prediction = 1
+        return (row[0], prediction, row[1].TARGET, distances)
+
+    prediction_df = grouped.map(sorter).toDF().withColumnRenamed('_1', 'train_SK_ID_CURR').withColumnRenamed('_2', 'rawPrediction').withColumnRenamed('_3', "TARGET").withColumnRenamed('_4', 'features')
+    prediction_df = prediction_df.withColumn('prediction', prediction_df['rawPrediction'])
+    prediction_df.show(10)
+    return multiple_evaluator(prediction_df)
 
 
 
