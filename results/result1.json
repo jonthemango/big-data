@@ -1,0 +1,39 @@
+{
+    "features": ["EXT_SOURCE_1","EXT_SOURCE_2","EXT_SOURCE_3","late_loan_ratio","avg(DAYS_CREDIT)","credit_over_income","previous_loan_count"],
+    "src.runners.decision_tree": {
+        "F1": 0.24277692700357326,
+        "FN": 1684,
+        "FP": 13150,
+        "TN": 35670,
+        "TP": 2378,
+        "accuracy": 0.7194886728943686,
+        "areaUnderPR": 0.058132849034578576,
+        "areaUnderROC": 0.3910376918920195,
+        "precision": 0.15314270994332818,
+        "recall": 0.585425898572132
+    },
+    "src.runners.linear_support_vector_machine": {
+        "F1": 0.00486854917234664,
+        "FN": 4069,
+        "FP": 19,
+        "TN": 48970,
+        "TP": 10,
+        "accuracy": 0.9229667596291551,
+        "areaUnderPR": 0.1884182485639699,
+        "areaUnderROC": 0.7241555660205422,
+        "precision": 0.3448275862068966,
+        "recall": 0.002451581269919098
+    },
+    "src.runners.random_forest": {
+        "F1": 0.24106221683936663,
+        "FN": 1362,
+        "FP": 15557,
+        "TN": 32916,
+        "TP": 2687,
+        "accuracy": 0.6778683218460836,
+        "areaUnderPR": 0.19690976688748654,
+        "areaUnderROC": 0.7285473362670316,
+        "precision": 0.14728129796097347,
+        "recall": 0.6636206470733514
+    }
+}

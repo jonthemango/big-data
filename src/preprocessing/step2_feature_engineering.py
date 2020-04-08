@@ -64,7 +64,7 @@ def encode_using_indexer(df, column_name):
 
 
 def encode_using_stats(df, column_names, sql_type=sparkTypes.FloatType):
-    '''Returns an aggregated df of the  min, max, and mean of a column'''
+    '''Returns an aggregated df of the  min, max, and mean of a column for each SK_ID_CURR'''
     aggregations = []
     for column_name in column_names:
         df = cast_column_to_type(df, column_name, sql_type)
@@ -191,12 +191,75 @@ def preprocess_features(takeSample=False):
 
     return data_df, features
 
+def preprocess_features2(application_filename = f'{root}data/application_train.csv',takeSample=False):
+
+    # Read CSV file
+    spark = utils.init_spark()
+    data_df = spark.read.csv(application_filename, header=True)
+
+    # Compute Loan Repayment Ratio
+    bureau_filename = f'{root}data/bureau.csv'
+    previous_loans_df = spark.read.csv(bureau_filename, header=True) # X columns
+    payment_status_df = get_previous_loan_status(previous_loans_df)
+    data_df = data_df.join(payment_status_df, on="SK_ID_CURR", how="inner")
+
+    data_df.cache()
+
+    # List of Features
+    # https://www.kaggle.com/willkoehrsen/introduction-to-manual-feature-engineering/notebook#Feature-Engineering-Outcomes
+    features = [
+        "EXT_SOURCE_1",
+        'EXT_SOURCE_2',
+        'EXT_SOURCE_3',
+        'late_loan_ratio',
+        'avg(DAYS_CREDIT)',
+        'credit_over_income',
+        # 'previous_loan_count'
+    ]
+
+    # Cast columns to float
+    if application_filename==f'{root}data/application_train.csv':
+        data_df = cast_column_to_type(data_df, 'TARGET', sparkTypes.IntegerType)
+
+    data_df = cast_column_to_type(data_df, 'EXT_SOURCE_1', sparkTypes.FloatType).na.fill(0.5, 'EXT_SOURCE_1')
+    data_df = cast_column_to_type(data_df, 'EXT_SOURCE_2', sparkTypes.FloatType).na.fill(0.5, 'EXT_SOURCE_2')
+    data_df = cast_column_to_type(data_df, 'EXT_SOURCE_3', sparkTypes.FloatType).na.fill(0.5, 'EXT_SOURCE_3')
+    data_df = cast_column_to_type(data_df, 'AMT_INCOME_TOTAL', sparkTypes.FloatType)
+    data_df = cast_column_to_type(data_df, 'AMT_CREDIT', sparkTypes.FloatType)
+
+    # Combine two features into one AMT_CREDIT/AMT_INCOME_TOTAL as credit_over_loan
+    data_df = data_df.withColumn('credit_over_income',data_df['AMT_CREDIT']/data_df['AMT_INCOME_TOTAL'])
+
+    # Encode DAYS_CREDIT as avg(DAYS_CREDIT)
+    agg_df, _ = encode_using_stats(previous_loans_df, ['DAYS_CREDIT'], sql_type=sparkTypes.FloatType)
+    data_df = data_df.join(agg_df, on="SK_ID_CURR", how='inner')
+
+    # Count number of previous_application
+    '''count_of_previous = previous_loans_df.groupby('SK_ID_CURR').count().withColumnRenamed('count', 'previous_loan_count').select("SK_ID_CURR","previous_loan_count")
+    data_df = data_df.join(count_of_previous, on="SK_ID_CURR")'''
+
+    if application_filename==f'{root}data/application_train.csv':
+        data_df = data_df.select(features+['TARGET', 'SK_ID_CURR'])
+    else:
+        data_df = data_df.select(features+['SK_ID_CURR'])
+
+    describe = data_df.describe()
+    describe.show()
+    data_df.show()
+    return data_df, features
 
 if __name__ == "__main__":
-    data_df, features = preprocess_features()
-    #data_df.show(100)
+    data_df, features = preprocess_features2()
+    data_df.describe().show()
+    ''''#data_df.show(100)
     def toCSVLine(data):
         return ','.join(str(d) for d in data)
 
-    lines = data_df.rdd.map(toCSVLine)
+    #lines = data_df.rdd.map(toCSVLine).reduce(lambda x,y : x+y+"\n")
+    with open('out.csv', 'w') as f:
+        #f.write(lines)
+        pass'''
+
+    data_df.show()
+
     print(features)

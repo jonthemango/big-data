@@ -3,6 +3,7 @@ from src.runners import decision_tree
 from src.runners import linear_support_vector_machine
 from src.runners import naive_bayes
 from src.runners import knn
+from src.runners import kaggle
 import sys
 import pprint
 
@@ -13,7 +14,8 @@ algorithms = [
     decision_tree,
     linear_support_vector_machine,
     naive_bayes,
-    knn
+    knn,
+    kaggle
 ]
 
 if __name__ == '__main__':

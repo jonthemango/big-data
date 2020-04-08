@@ -20,11 +20,11 @@ from pyspark.ml.classification import LinearSVC
 
 
 def driver(takeSample=False):
-    data_df, features = feature_eng.preprocess_features(takeSample=takeSample)
+    data_df, features = feature_eng.preprocess_features2(takeSample=takeSample)
     data_df.cache()
     # Split the data into training and test sets (30% held out for testing)
     (trainingData, testData) = data_df.randomSplit([0.8, 0.2])
-    trainingData = sampling.undersample(trainingData,class_ratio=0.55)
+    trainingData = sampling.undersample(trainingData,class_ratio=0.6)
 
     # Assemble all features in a vector using Vector Assembler
     # map it to new column named features
@@ -34,6 +34,9 @@ def driver(takeSample=False):
     lsvc = LinearSVC(labelCol='TARGET', maxIter=10, regParam=0.1)
 
     # Chain vector_assembler and lsvc in a Pipeline
+    vector_assembler.transform(trainingData).show(20, False)
+
+
     pipeline = Pipeline(stages=[vector_assembler, lsvc])
 
     # Fit the model
