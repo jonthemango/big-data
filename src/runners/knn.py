@@ -27,7 +27,7 @@ from numpy.lib.scimath import sqrt
 def driver(takeSample=False):
     print("***\n\n\nStarting KNN")
     # Pre-process features
-    data_df, features = feature_eng.preprocess_features(takeSample=takeSample)
+    data_df, features = feature_eng.preprocess_features2(takeSample=takeSample)
 
     # Assemble all features in a vector using Vector Assembler
     # map it to new column named features
@@ -37,7 +37,7 @@ def driver(takeSample=False):
     data_df = vector_assembler.transform(data_df) # data_df => SK_ID_CURR, ..., .transform(vector_assembler) =>  "features": Vector<float>
     print("***\n\n\nVector Assembler Made")
     # Split the data into training and test sets (30% held out for testing)
-    (trainingData, testData) = data_df.randomSplit([0.7, 0.3])
+    (trainingData, testData) = data_df.randomSplit([0.8, 0.2])
     print("***\n\n\nData Split KNN")
     train_vector = trainingData.select("SK_ID_CURR","features", "TARGET").withColumnRenamed("SK_ID_CURR","train_SK_ID_CURR").withColumnRenamed("features","train_features")
     test_vector = testData.select("SK_ID_CURR","features").withColumnRenamed("SK_ID_CURR","test_SK_ID_CURR").withColumnRenamed("features","test_features")

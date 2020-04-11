@@ -3,14 +3,19 @@ from src.runners import decision_tree
 from src.runners import linear_support_vector_machine
 from src.runners import naive_bayes
 from src.runners import knn
+from src.runners import kaggle
 import sys
+import pprint
 
-drivers = [
+
+
+algorithms = [
     random_forest,
     decision_tree,
     linear_support_vector_machine,
     naive_bayes,
-    knn
+    knn,
+    kaggle
 ]
 
 if __name__ == '__main__':
@@ -27,13 +32,17 @@ if __name__ == '__main__':
     print(f"Runner = {runner}", f"Take Sample = {takeSample}")
     report = {}
     if runner == 'all':
-        for driver in drivers:
+        for algo in algorithms:
             try:
-                report[driver.__name__] = driver.driver(takeSample)
+                report[algo.__name__] = algo.driver(takeSample)
             except:
-                print(f"{driver.__name__} failed to execute.")
+                print(f"{algo.__name__} failed to execute.")
     else:
         driver = getattr(globals()[runner], 'driver')
         report[runner] = driver(takeSample=takeSample)
-    print(report)
+
+    pp = pprint.PrettyPrinter(indent=2)
+    pp.pprint(report)
+
+
 

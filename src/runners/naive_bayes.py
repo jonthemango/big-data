@@ -4,6 +4,7 @@ sys.path.append(".")
 
 from src.preprocessing import step2_feature_engineering as feature_eng
 from src.evaluators import multiple_evaluator
+from src.preprocessing import step3_undersampling as sampling
 
 from pyspark.rdd import RDD
 from pyspark.sql import DataFrame
@@ -19,10 +20,11 @@ from pyspark.ml.evaluation import BinaryClassificationEvaluator,MulticlassClassi
 
 
 def driver(takeSample=False):
-    data_df, features = feature_eng.preprocess_features(takeSample=takeSample)
+    data_df, features = feature_eng.preprocess_features2(takeSample=takeSample)
     data_df.cache()
     # Split the data into training and test sets (30% held out for testing)
     (trainingData, testData) = data_df.randomSplit([0.7, 0.3])
+    trainingData = sampling.undersample(trainingData,class_ratio=0.6)
 
     # create the trainer and set its parameters
     nb = NaiveBayes(labelCol='TARGET', featuresCol='OCCUPATION_TYPE',

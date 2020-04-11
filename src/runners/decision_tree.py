@@ -4,6 +4,7 @@ sys.path.append(".")
 
 from src.preprocessing import step2_feature_engineering as feature_eng
 from src.evaluators import multiple_evaluator
+from src.preprocessing import step3_undersampling as sampling
 
 from pyspark.rdd import RDD
 from pyspark.sql import DataFrame
@@ -21,10 +22,11 @@ from pyspark.ml.evaluation import BinaryClassificationEvaluator,MulticlassClassi
 def driver(takeSample=False):
 
     # Pre-process features
-    data_df, features = feature_eng.preprocess_features(takeSample=takeSample)
+    data_df, features = feature_eng.preprocess_features2(takeSample=takeSample)
 
     # Split the data into training and test sets (30% held out for testing)
-    (trainingData, testData) = data_df.randomSplit([0.7, 0.3])
+    (trainingData, testData) = data_df.randomSplit([0.8, 0.2])
+    trainingData = sampling.undersample(trainingData,class_ratio=0.55)
 
     # Assemble all features in a vector using Vector Assembler
     # map it to new column named features
@@ -43,7 +45,7 @@ def driver(takeSample=False):
 
     # Make predictions.
     predictions = model.transform(testData)
-    predictions.select('TARGET', 'rawPrediction').show(20)
+    predictions.select('TARGET', 'rawPrediction','prediction','probability').show()
 
     return multiple_evaluator(predictions)
 

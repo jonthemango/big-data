@@ -24,13 +24,13 @@ def undersample(train_df, class_ratio=0.8):
     desire class_ratio. You can then experiement with different class ratios to
     see what yields the best results.
     '''
+
+    print("\n* Under sampling majority class...")
     original_ratio = 0.92  # statistically this will hold true
     total_count = train_df.count()
     majority_class_df = train_df.where(train_df['TARGET'] == 0)
     minority_class_df = train_df.where(train_df['TARGET'] == 1)
     majority_count = majority_class_df.count()
-    print(f'\n\nminority_class_df.count() = {minority_class_df.count()}')
-    print(f'number of majority class records =  {majority_count}')
 
     minority_count = total_count-majority_count
 
@@ -39,6 +39,8 @@ def undersample(train_df, class_ratio=0.8):
 
     undersampled_majority = majority_class_df.sample(sampling_ratio)
     new_train_df = undersampled_majority.union(minority_class_df)
+
+    print("undersampling done!")
     return new_train_df
 
 

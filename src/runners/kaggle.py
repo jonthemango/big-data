@@ -18,12 +18,16 @@ from pyspark.ml.feature import VectorAssembler
 from pyspark.ml.evaluation import BinaryClassificationEvaluator,MulticlassClassificationEvaluator
 from pyspark.ml.classification import LinearSVC
 
-
 def driver(takeSample=False):
+    root_dir = utils.get_project_root_dir()
+    kaggle_test,_ = feature_eng.preprocess_features2(f'{root_dir}data/application_test.csv',takeSample=False)
+    kaggle_test.cache()
+
     data_df, features = feature_eng.preprocess_features2(takeSample=takeSample)
     data_df.cache()
     # Split the data into training and test sets (30% held out for testing)
-    (trainingData, testData) = data_df.randomSplit([0.8, 0.2])
+    # (trainingData, testData) = data_df.randomSplit([0.8, 0.2])
+    trainingData = data_df
     trainingData = sampling.undersample(trainingData,class_ratio=0.6)
 
     # Assemble all features in a vector using Vector Assembler
@@ -42,10 +46,14 @@ def driver(takeSample=False):
     # Fit the model
     lsvcModel = pipeline.fit(trainingData)
 
-    predictions = lsvcModel.transform(testData)
-    predictions.select('TARGET', 'rawPrediction', 'prediction').show()
+    predictions = lsvcModel.transform(kaggle_test)
 
-    return multiple_evaluator(predictions)
+    spark = utils.init_spark()
+    submission_file_df = predictions.select('SK_ID_CURR','prediction').withColumnRenamed('prediction','TARGET')
+
+    submission_file_df.toPandas().to_csv('predictions.csv',index=None,header=True)
+
+    return None
 
 if __name__ == '__main__':
     driver()
