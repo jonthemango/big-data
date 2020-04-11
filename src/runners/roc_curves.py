@@ -15,7 +15,7 @@
 # PARTICULAR PURPOSE AND NONINFRINGEMENT. In no event shall OpenEye be
 # liable for any damages or liability in connection with the Sample Code
 # or its use.
-# https://docs.eyesopen.com/toolkits/cookbook/python/plotting/roc.html
+
 ###########
 # you can run it using
 # python roc_curves.py actives.txt scores.txt roc.png
