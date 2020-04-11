@@ -72,3 +72,60 @@ For training we will use spark mllib. We are interested in applying packaged alg
 For evaluation we will define true positives as loans we correctly predict as accepted, true negatives as loans we correctly predict as rejected, false positives as loans we incorrectly predict as accepted and false negatives as loans we incorrectly predict as rejected. We will use spark ml to evaluate our models.
 
 Once we iterate upon this process of pre-process to test/train split to algorithm-selections to evaluation we will also be deploying our model to a web service continuously. The goal is to wrap a Python Flask web service around a sub-set of our models and create a Web UI where users can enter information of a client and view what values our models predict. We will use docker, Flask and ReactJs for this web service.
+
+## Feature Engineering Techniques
+
+-   One Hot Encoding for categorical variables
+	-   eg. For a set of categories {A,B,C} , the feature is equal to unit vectors, A=<1,0,0> B=<0,1,0> C=<0,0,1>
+-   String indexer encoding for binary variables
+	-   eg. For set of categories {A,B} the feature is equal to integer where A=0, B=1
+-   Float variables and Integers are left as is
+-   Aggregate multiplicity into statistics
+    -	Eg. Combine multiple rows that each reference a single instance, calculate mean, min, max, etc. So that these statistics are included  in the feature vector.
+
+## Data Separation / Class Imbalance
+
+ - Traditional split of train/test 80%-20%
+ - class ratio = (majority class)➗(majority class + minority class)
+ - provide a desired class_ratio (0.3 - 0.55 - 0.60 - 0.7)
+ - Undersample majority until we reach class ratio
+
+## Algorithms for Model Training (Hyperparameters)
+
+ - Linear SVM : maxIter=10, regParam=0.1
+ - Decision Tree : maxDepth=5, maxBins=32
+ - Random Forest : numTrees=100, maxDepth=10
+ - kNN: k=5, distance function=Euclidean*  (Computationally Infeasible)
+
+ ## Big Data Infrastructure
+
+- Google Console Dataproc
+- Issuing PySpark Jobs to a virtual cluster
+- 16 vCPU 60Gb ram
+- 1 single master, no physical workers
+- Jupyter Server, HDFS NameNode Server and Spark History Server
+- Submitting about 140 jobs
+
+## Evaluation on Test Set
+
+- Area Under ROC  (using BinaryClassificationEvaluator )
+- Built our own evaluator: Precision , Recall
+- From this we compute F1
+
+|State|Label|Prediction|
+|---|---|---|
+|FN|1|0|
+|TP|1|1|
+|TN|0|0|
+|FP|0|1|
+> Confusion Matrix
+
+## Results
+
+
+|**Algorithm**|**Area Under ROC**|**Precision**|**Recall**|**F1**
+|---|---|---|---|---|
+|SVM|0.72416|0.3448275|0.002452|0.0048685
+|Decision Tree|0.39103|0.15314|0.585425|0.2427769
+|**Random Forest**|**0.7285473**|**0.14728129**|**0.663621**|**0.24106221**
+|**Competition winners**|**0.80570**|-|-|-
