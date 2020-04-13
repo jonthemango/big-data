@@ -50,7 +50,7 @@ def driver(takeSample=False):
 
     # Make predictions.
     predictions = model.transform(testData)
-    pred = predictions.select('TARGET', 'rawPrediction','prediction','probability')
+    pred = predictions.select('SK_ID_CURR','TARGET', 'rawPrediction','prediction','probability')
 
     pred.show()
 
