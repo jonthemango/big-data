@@ -118,7 +118,7 @@ We define late loans (labeled 1) to be the positive class, and loans repaid on t
 
 Using spark's built-in evaluation module was not an option for precision, recall, and F1 scores as the numbers reported were very high compared to area under ROC. We suspect that spark inversed the meaning of positive/negative class and therefore the metrics were meaningless. We also did not want to use accuracy as a metric since accuracy can be very misleading: our initial classifier only predicted 0's and that yields a 92% accuracy, even though the classifier was useless.
 
-To remediate this problem, we manually count the TP, TN, FP, and FN rates and compute precision, recall, and F1 using their respective formulas. We also used spark's area under ROC curve evaluator due to that metric being used as a baseline in the competition.
+To remediate this problem, we manually count the TP, TN, FP, and FN rates and compute precision, recall, and F1 using their respective formulas. We also used spark's area under ROC curve evaluator due to that metric being used as a baseline in the competition. So area under ROC was our only way to compare ourselves to other teams who attempted to solve the same problem.
 
 ### Best Runs
 

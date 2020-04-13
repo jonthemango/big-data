@@ -1,3 +1,6 @@
+import sys
+sys.path.append(".")
+
 from src.utils import dump, init_spark
 import os
 

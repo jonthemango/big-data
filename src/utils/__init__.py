@@ -34,7 +34,7 @@ def get_project_root_dir() -> str:
         else:
             os.chdir('..')
     if sys.platform == "linux":
-        return f'file://{os.getcwd()}/'
+        return f'{os.getcwd()}/'
     elif sys.platform == "win32":
         return f'{os.getcwd()}/'
     else:
