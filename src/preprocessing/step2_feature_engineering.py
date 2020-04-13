@@ -213,7 +213,7 @@ def preprocess_features2(application_filename = f'{root}data/application_train.c
         'EXT_SOURCE_3',
         'late_loan_ratio',
         'avg(DAYS_CREDIT)',
-        'credit_over_income',
+        'credit_over_income'
         # 'previous_loan_count'
     ]
 
