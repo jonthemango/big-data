@@ -16,13 +16,13 @@ spark = utils.init_spark()
 
 def undersample(train_df, class_ratio=0.8):
     '''
-    This will undersample the training set with respect to the majority to
-    minority class_ratio mentionned above. The original set has a ratio of 0.92.
-    Keep in mind that class_ratio is not the portio of the majority class that
-    will be dropped. It is the desired outcome ratio. This function will take
-    care of figuring out the exact sampling_ratio necessary to achieve the
-    desire class_ratio. You can then experiement with different class ratios to
-    see what yields the best results.
+    This will undersample the training set with respect to the class_ratio
+    mentionned above. The original set has a ratio of 0.92. Keep in mind that
+    class_ratio is not the portion of the majority class that will be dropped.
+    It is the desired outcome ratio. This function will take care of figuring
+    out the exact sampling ratio necessary to achieve the desired class_ratio.
+    You can then experiment with different class ratios to see what yields the
+    best results.
     '''
 
     print("\n* Under sampling majority class...")
