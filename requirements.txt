@@ -1,2 +1,2 @@
 matplotlib
-pyspark==2.4.5
+pyspark==3.2.2
